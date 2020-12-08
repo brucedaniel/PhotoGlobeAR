@@ -11,7 +11,6 @@ enum FlipTableError: Error {
 class Photo {
     var asset : PHAsset? {
         didSet(newAsset) {
-            //newAsset!
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM dd"
             self.text = ModelEntity(
@@ -31,18 +30,17 @@ class Photo {
             let manager = PHImageManager.default()
                 let option = PHImageRequestOptions()
             option.isSynchronous = true
-            guard newAsset != nil else {
-                print("no asset: \(newAsset)")
-                return
-            }
-            manager.requestImage(for: newAsset!, targetSize: CGSize(width: 400.0, height: 400.0), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+     
+            manager.requestImage(for: asset!, targetSize: CGSize(width: 400.0, height: 400.0), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
                 if let data = result!.pngData() {
                     let filename = self.getDocumentsDirectory().appendingPathComponent("PhotoGlobe_thumb_\(self.index).png")
-                    self.url = filename
+                    
                     try? data.write(to: filename)
-                    }
+                    print("filename: \(filename)")
+                    self.url = filename
+                }
                 
-                })
+            })
         }
     }
     
@@ -55,7 +53,13 @@ class Photo {
     var angle = 0.0
     var distance = 0.0
     var inclination = 0.0
-    var url : URL?
+    var url : URL? {
+        didSet(newURL) {
+            self.imageMaterial?.baseColor = try! MaterialColorParameter.texture(TextureResource.load(contentsOf:self.url!))
+            self.base?.model?.materials.removeAll()
+            self.base?.model?.materials.append(self.imageMaterial!)
+        }
+    }
     var text : ModelEntity?
     var base : ModelEntity?
     var imageMaterial : SimpleMaterial?
