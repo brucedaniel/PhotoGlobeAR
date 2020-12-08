@@ -20,21 +20,23 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
       case .positioning:
         changedFromPositioningStatus()
       default:
-        print("status was: \(status)")
+        break
+        //print("status was: \(status)")
       }
       switch status {
       case .positioning:
         setToPositioningStatus()
       default:
-        print("status is: \(status)")
+        break
+        //print("status is: \(status)")
       }
     }
   }
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         // Do something with the new transform
-        let currentTransform = frame.camera.transform
-        print(currentTransform)
+        //let currentTransform = frame.camera.transform
+        //print(currentTransform)
     }
     
   // MARK: - Touch Gesture Variables

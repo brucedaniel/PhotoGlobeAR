@@ -27,11 +27,30 @@ class Photo {
             self.text?.setPosition(SIMD3.init(-0.5, -1.5, -0.0), relativeTo: text)
             self.base?.addChild(text!)
             
-            PHImageManager.default().requestImageDataAndOrientation(for: asset!, options: PHImageRequestOptions(), resultHandler: { dat,str,ori,opt in
-                print("\(opt?.keys)")
-            })
+            let manager = PHImageManager.default()
+                let option = PHImageRequestOptions()
+            option.isSynchronous = true
+            guard newAsset != nil else {
+                print("no asset: \(newAsset)")
+                return
+            }
+            manager.requestImage(for: newAsset!, targetSize: CGSize(width: 400.0, height: 400.0), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+                if let data = result!.pngData() {
+                    let filename = self.getDocumentsDirectory().appendingPathComponent("PhotoGlobe_thumb_\(self.index).png")
+                    self.url = filename
+                    try? data.write(to: filename)
+                    }
+                
+                })
         }
     }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    
     var angle = 0.0
     var distance = 0.0
     var inclination = 0.0
@@ -44,6 +63,7 @@ class Photo {
     var stepper : RUIStepper?
     var slider : RUISlider?
     var uiSwitch : RUISwitch?
+    var index = -1
     
     init(table:FlipTable) {
         self.table = table
@@ -101,24 +121,49 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
     required init() {
         super.init()
     
-    //let fetchOptions = PHFetchOptions()
-    let allPhotosOptions = PHFetchOptions()
-    allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-    self.allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-    //let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
-    //let userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
+        self.checkAuthorizationForPhotoLibraryAndGet()
+   
+  }
     
-    DispatchQueue.main.async {
+    private func checkAuthorizationForPhotoLibraryAndGet(){
+        let status = PHPhotoLibrary.authorizationStatus()
+
+        if (status == PHAuthorizationStatus.authorized) {
+            // Access has been granted.
+            getPhotosAndVideos()
+        }else {
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in
+
+                if (newStatus == PHAuthorizationStatus.authorized) {
+                        self.getPhotosAndVideos()
+                }else {
+
+                }
+            })
+        }
+    }
+    
+    private func getPhotosAndVideos(){
+
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",ascending: false)]
+        fetchOptions.predicate = NSPredicate(format: "mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+        self.allPhotos = PHAsset.fetchAssets(with: fetchOptions)
+        
+        print(self.allPhotos)
+        
         for index in 0...20 {
             let newPhoto = Photo(table: self)
+            newPhoto.index = index
             newPhoto.asset = self.allPhotos?.object(at: index)
             self.photos.append(newPhoto)
             self.addChild(newPhoto.base!)
         }
             
         self.updateCarousel()
-    }
-  }
+        }
+
+        
     
     func updateCarousel() {
         for index in 0...self.photos.count-1 {
@@ -131,9 +176,9 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
             photo.base?.position.z = Float(4.0 * sin(angle))
         }
         self.carouselAngle += 0.01
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-//            self.updateCarousel()
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.updateCarousel()
+        }
     }
 }
 
