@@ -1,7 +1,7 @@
 import ARKit
 import UIKit
 
-extension CardFlipARView: ARCoachingOverlayViewDelegate {
+extension PhotoGlobeARView: ARCoachingOverlayViewDelegate {
   func addCoaching() {
     self.coachingOverlay.delegate = self
     self.coachingOverlay.session = self.session

@@ -11,9 +11,9 @@ struct ContentView: View {
 
 /// This view is not currently used, instead the struct above is
 struct ARViewContainer: UIViewRepresentable {
-  func makeUIView(context: Context) -> CardFlipARView {
+  func makeUIView(context: Context) -> PhotoGlobeARView {
 
-    let arView = CardFlipARView(frame: .zero)
+    let arView = PhotoGlobeARView(frame: .zero)
     arView.enableRealityUIGestures(.all)
     let config = ARWorldTrackingConfiguration()
     config.planeDetection = .horizontal
@@ -25,7 +25,7 @@ struct ARViewContainer: UIViewRepresentable {
     arView.debugOptions.insert([.showSceneUnderstanding, .showWorldOrigin, .showAnchorOrigins])
     return arView
   }
-  func updateUIView(_ uiView: CardFlipARView, context: Context) {}
+  func updateUIView(_ uiView: PhotoGlobeARView, context: Context) {}
 
 }
 

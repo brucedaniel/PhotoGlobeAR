@@ -10,15 +10,15 @@
 		5FFED20124E1D8CA00B53CE7 /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFED20024E1D8CA00B53CE7 /* CardComponent.swift */; };
 		5FFED20324E1D8D400B53CE7 /* HasTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFED20224E1D8D400B53CE7 /* HasTap.swift */; };
 		5FFED20524E1D8E000B53CE7 /* ARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFED20424E1D8E000B53CE7 /* ARButton.swift */; };
-		F31E88DF22DFA6CE00E4B6A7 /* CardFlipARView+Coaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E88DE22DFA6CE00E4B6A7 /* CardFlipARView+Coaching.swift */; };
+		F31E88DF22DFA6CE00E4B6A7 /* PhotoGlobeARView+Coaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31E88DE22DFA6CE00E4B6A7 /* PhotoGlobeARView+Coaching.swift */; };
 		F390D51022DE886A00D21945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390D50F22DE886A00D21945 /* AppDelegate.swift */; };
 		F390D51422DE886A00D21945 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390D51322DE886A00D21945 /* ContentView.swift */; };
 		F390D51622DE886A00D21945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F390D51522DE886A00D21945 /* Assets.xcassets */; };
 		F390D51C22DE886A00D21945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F390D51A22DE886A00D21945 /* LaunchScreen.storyboard */; };
 		F390D54022DE88BA00D21945 /* FlipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390D53F22DE88BA00D21945 /* FlipCard.swift */; };
 		F390D54222DE8BF800D21945 /* FlipTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390D54122DE8BF800D21945 /* FlipTable.swift */; };
-		F3CFE77022DFA34E0071C3AD /* CardFlipARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CFE76F22DFA34E0071C3AD /* CardFlipARView.swift */; };
-		F3DB095A22F2E24700EEBA05 /* CardFlipARView+GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEC08D22F2E12A003EBC87 /* CardFlipARView+GameStatus.swift */; };
+		F3CFE77022DFA34E0071C3AD /* PhotoGlobeARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CFE76F22DFA34E0071C3AD /* PhotoGlobeARView.swift */; };
+		F3DB095A22F2E24700EEBA05 /* PhotoGlobeARView+GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEC08D22F2E12A003EBC87 /* PhotoGlobeARView+GameStatus.swift */; };
 		F8F721962549D2F3009A7761 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = F8F721952549D2F3009A7761 /* RealityUI */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		5FFED20024E1D8CA00B53CE7 /* CardComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
 		5FFED20224E1D8D400B53CE7 /* HasTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasTap.swift; sourceTree = "<group>"; };
 		5FFED20424E1D8E000B53CE7 /* ARButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARButton.swift; sourceTree = "<group>"; };
-		F31E88DE22DFA6CE00E4B6A7 /* CardFlipARView+Coaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFlipARView+Coaching.swift"; sourceTree = "<group>"; };
+		F31E88DE22DFA6CE00E4B6A7 /* PhotoGlobeARView+Coaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoGlobeARView+Coaching.swift"; sourceTree = "<group>"; };
 		F390D50C22DE886A00D21945 /* PhotoGlobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGlobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F390D50F22DE886A00D21945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F390D51322DE886A00D21945 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,8 +35,8 @@
 		F390D51D22DE886A00D21945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F390D53F22DE88BA00D21945 /* FlipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCard.swift; sourceTree = "<group>"; };
 		F390D54122DE8BF800D21945 /* FlipTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTable.swift; sourceTree = "<group>"; };
-		F3CFE76F22DFA34E0071C3AD /* CardFlipARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFlipARView.swift; sourceTree = "<group>"; };
-		F3DEC08D22F2E12A003EBC87 /* CardFlipARView+GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardFlipARView+GameStatus.swift"; sourceTree = "<group>"; };
+		F3CFE76F22DFA34E0071C3AD /* PhotoGlobeARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGlobeARView.swift; sourceTree = "<group>"; };
+		F3DEC08D22F2E12A003EBC87 /* PhotoGlobeARView+GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoGlobeARView+GameStatus.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +96,9 @@
 		F3DEC08B22F2E113003EBC87 /* PhotoGlobeARView */ = {
 			isa = PBXGroup;
 			children = (
-				F3CFE76F22DFA34E0071C3AD /* CardFlipARView.swift */,
-				F3DEC08D22F2E12A003EBC87 /* CardFlipARView+GameStatus.swift */,
-				F31E88DE22DFA6CE00E4B6A7 /* CardFlipARView+Coaching.swift */,
+				F3CFE76F22DFA34E0071C3AD /* PhotoGlobeARView.swift */,
+				F3DEC08D22F2E12A003EBC87 /* PhotoGlobeARView+GameStatus.swift */,
+				F31E88DE22DFA6CE00E4B6A7 /* PhotoGlobeARView+Coaching.swift */,
 			);
 			path = PhotoGlobeARView;
 			sourceTree = "<group>";
@@ -184,9 +184,9 @@
 				F390D54022DE88BA00D21945 /* FlipCard.swift in Sources */,
 				F390D54222DE8BF800D21945 /* FlipTable.swift in Sources */,
 				F390D51022DE886A00D21945 /* AppDelegate.swift in Sources */,
-				F3CFE77022DFA34E0071C3AD /* CardFlipARView.swift in Sources */,
-				F3DB095A22F2E24700EEBA05 /* CardFlipARView+GameStatus.swift in Sources */,
-				F31E88DF22DFA6CE00E4B6A7 /* CardFlipARView+Coaching.swift in Sources */,
+				F3CFE77022DFA34E0071C3AD /* PhotoGlobeARView.swift in Sources */,
+				F3DB095A22F2E24700EEBA05 /* PhotoGlobeARView+GameStatus.swift in Sources */,
+				F31E88DF22DFA6CE00E4B6A7 /* PhotoGlobeARView+Coaching.swift in Sources */,
 				5FFED20124E1D8CA00B53CE7 /* CardComponent.swift in Sources */,
 				F390D51422DE886A00D21945 /* ContentView.swift in Sources */,
 			);

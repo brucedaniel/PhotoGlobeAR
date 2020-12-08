@@ -10,7 +10,7 @@ struct GameData {
   }
 }
 
-class CardFlipARView: ARView, ARSessionDelegate {
+class PhotoGlobeARView: ARView, ARSessionDelegate {
   let coachingOverlay = ARCoachingOverlayView()
   var tableAdded = false
 

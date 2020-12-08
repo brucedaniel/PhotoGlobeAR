@@ -8,7 +8,7 @@ enum GameStatus {
   case finished
 }
 
-extension CardFlipARView {
+extension PhotoGlobeARView {
 
   func changedFromPositioningStatus() {
     self.flipTable?.collision = nil
