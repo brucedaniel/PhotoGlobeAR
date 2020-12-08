@@ -11,6 +11,7 @@ enum FlipTableError: Error {
 class Photo {
     var asset : PHAsset? {
         didSet(newAsset) {
+            //newAsset!
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM dd"
             self.text = ModelEntity(
@@ -111,7 +112,6 @@ class Photo {
         
     }
 }
-/// FlipTable class contains all the cards in the game
 class FlipTable: Entity, HasAnchoring, HasCollision {
   var allPhotos : PHFetchResult<PHAsset>?
   var photos = [Photo].init()
@@ -129,7 +129,6 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
         let status = PHPhotoLibrary.authorizationStatus()
 
         if (status == PHAuthorizationStatus.authorized) {
-            // Access has been granted.
             getPhotosAndVideos()
         }else {
             PHPhotoLibrary.requestAuthorization({ (newStatus) in
@@ -137,7 +136,7 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
                 if (newStatus == PHAuthorizationStatus.authorized) {
                         self.getPhotosAndVideos()
                 }else {
-
+                        print("DID NOT GET PERMISSION")
                 }
             })
         }
@@ -150,7 +149,7 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
         fetchOptions.predicate = NSPredicate(format: "mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
         self.allPhotos = PHAsset.fetchAssets(with: fetchOptions)
         
-        print(self.allPhotos)
+        print("\(self.allPhotos!)")
         
         for index in 0...20 {
             let newPhoto = Photo(table: self)
@@ -178,21 +177,6 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
         self.carouselAngle += 0.01
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.updateCarousel()
-        }
-    }
-}
-
-extension PHAsset {
-    var thumbnailImage : UIImage {
-        get {
-            let manager = PHImageManager.default()
-            let option = PHImageRequestOptions()
-            var thumbnail = UIImage()
-            option.isSynchronous = true
-            manager.requestImage(for: self, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-                thumbnail = result!
-            })
-            return thumbnail
         }
     }
 }
