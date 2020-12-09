@@ -1,0 +1,405 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F8191A43258165490067C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A42258165490067C2B1 /* AppDelegate.swift */; };
+		F8191A45258165490067C2B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A44258165490067C2B1 /* ViewController.swift */; };
+		F8191A47258165490067C2B1 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = F8191A46258165490067C2B1 /* Experience.rcproject */; };
+		F8191A4A258165490067C2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8191A48258165490067C2B1 /* Main.storyboard */; };
+		F8191A4C2581654A0067C2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8191A4B2581654A0067C2B1 /* Assets.xcassets */; };
+		F8191A4F2581654A0067C2B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8191A4D2581654A0067C2B1 /* LaunchScreen.storyboard */; };
+		F8191A5F258166170067C2B1 /* FlipTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A57258166170067C2B1 /* FlipTable.swift */; };
+		F8191A60258166170067C2B1 /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A58258166170067C2B1 /* CardComponent.swift */; };
+		F8191A61258166170067C2B1 /* FlipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A59258166170067C2B1 /* FlipCard.swift */; };
+		F8191A62258166170067C2B1 /* ARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5A258166170067C2B1 /* ARButton.swift */; };
+		F8191A63258166170067C2B1 /* HasTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5B258166170067C2B1 /* HasTap.swift */; };
+		F8191A64258166170067C2B1 /* PhotoGlobeARView+Coaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5C258166170067C2B1 /* PhotoGlobeARView+Coaching.swift */; };
+		F8191A65258166170067C2B1 /* PhotoGlobeARView+GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5D258166170067C2B1 /* PhotoGlobeARView+GameStatus.swift */; };
+		F8191A66258166170067C2B1 /* PhotoGlobeARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */; };
+		F8191A6B258166890067C2B1 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = F8191A6A258166890067C2B1 /* RealityUI */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F8191A3F258165490067C2B1 /* PhotoGlobeAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGlobeAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8191A42258165490067C2B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F8191A44258165490067C2B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F8191A46258165490067C2B1 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		F8191A49258165490067C2B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F8191A4B2581654A0067C2B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F8191A4E2581654A0067C2B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F8191A502581654A0067C2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8191A57258166170067C2B1 /* FlipTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipTable.swift; sourceTree = "<group>"; };
+		F8191A58258166170067C2B1 /* CardComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
+		F8191A59258166170067C2B1 /* FlipCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipCard.swift; sourceTree = "<group>"; };
+		F8191A5A258166170067C2B1 /* ARButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARButton.swift; sourceTree = "<group>"; };
+		F8191A5B258166170067C2B1 /* HasTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasTap.swift; sourceTree = "<group>"; };
+		F8191A5C258166170067C2B1 /* PhotoGlobeARView+Coaching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoGlobeARView+Coaching.swift"; sourceTree = "<group>"; };
+		F8191A5D258166170067C2B1 /* PhotoGlobeARView+GameStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoGlobeARView+GameStatus.swift"; sourceTree = "<group>"; };
+		F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGlobeARView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F8191A3C258165490067C2B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8191A6B258166890067C2B1 /* RealityUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F8191A36258165490067C2B1 = {
+			isa = PBXGroup;
+			children = (
+				F8191A41258165490067C2B1 /* PhotoGlobeAR */,
+				F8191A40258165490067C2B1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F8191A40258165490067C2B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8191A3F258165490067C2B1 /* PhotoGlobeAR.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F8191A41258165490067C2B1 /* PhotoGlobeAR */ = {
+			isa = PBXGroup;
+			children = (
+				F8191A5A258166170067C2B1 /* ARButton.swift */,
+				F8191A58258166170067C2B1 /* CardComponent.swift */,
+				F8191A59258166170067C2B1 /* FlipCard.swift */,
+				F8191A57258166170067C2B1 /* FlipTable.swift */,
+				F8191A5B258166170067C2B1 /* HasTap.swift */,
+				F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */,
+				F8191A5C258166170067C2B1 /* PhotoGlobeARView+Coaching.swift */,
+				F8191A5D258166170067C2B1 /* PhotoGlobeARView+GameStatus.swift */,
+				F8191A42258165490067C2B1 /* AppDelegate.swift */,
+				F8191A44258165490067C2B1 /* ViewController.swift */,
+				F8191A46258165490067C2B1 /* Experience.rcproject */,
+				F8191A48258165490067C2B1 /* Main.storyboard */,
+				F8191A4B2581654A0067C2B1 /* Assets.xcassets */,
+				F8191A4D2581654A0067C2B1 /* LaunchScreen.storyboard */,
+				F8191A502581654A0067C2B1 /* Info.plist */,
+			);
+			path = PhotoGlobeAR;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F8191A3E258165490067C2B1 /* PhotoGlobeAR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8191A532581654A0067C2B1 /* Build configuration list for PBXNativeTarget "PhotoGlobeAR" */;
+			buildPhases = (
+				F8191A3B258165490067C2B1 /* Sources */,
+				F8191A3C258165490067C2B1 /* Frameworks */,
+				F8191A3D258165490067C2B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotoGlobeAR;
+			packageProductDependencies = (
+				F8191A6A258166890067C2B1 /* RealityUI */,
+			);
+			productName = PhotoGlobeAR;
+			productReference = F8191A3F258165490067C2B1 /* PhotoGlobeAR.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F8191A37258165490067C2B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					F8191A3E258165490067C2B1 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = F8191A3A258165490067C2B1 /* Build configuration list for PBXProject "PhotoGlobeAR" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F8191A36258165490067C2B1;
+			packageReferences = (
+				F8191A69258166890067C2B1 /* XCRemoteSwiftPackageReference "RealityUI" */,
+			);
+			productRefGroup = F8191A40258165490067C2B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8191A3E258165490067C2B1 /* PhotoGlobeAR */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F8191A3D258165490067C2B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8191A4F2581654A0067C2B1 /* LaunchScreen.storyboard in Resources */,
+				F8191A4C2581654A0067C2B1 /* Assets.xcassets in Resources */,
+				F8191A4A258165490067C2B1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F8191A3B258165490067C2B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8191A64258166170067C2B1 /* PhotoGlobeARView+Coaching.swift in Sources */,
+				F8191A63258166170067C2B1 /* HasTap.swift in Sources */,
+				F8191A65258166170067C2B1 /* PhotoGlobeARView+GameStatus.swift in Sources */,
+				F8191A62258166170067C2B1 /* ARButton.swift in Sources */,
+				F8191A45258165490067C2B1 /* ViewController.swift in Sources */,
+				F8191A5F258166170067C2B1 /* FlipTable.swift in Sources */,
+				F8191A43258165490067C2B1 /* AppDelegate.swift in Sources */,
+				F8191A66258166170067C2B1 /* PhotoGlobeARView.swift in Sources */,
+				F8191A60258166170067C2B1 /* CardComponent.swift in Sources */,
+				F8191A61258166170067C2B1 /* FlipCard.swift in Sources */,
+				F8191A47258165490067C2B1 /* Experience.rcproject in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F8191A48258165490067C2B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8191A49258165490067C2B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F8191A4D2581654A0067C2B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8191A4E2581654A0067C2B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F8191A512581654A0067C2B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F8191A522581654A0067C2B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F8191A542581654A0067C2B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HNM8Z636B6;
+				INFOPLIST_FILE = PhotoGlobeAR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.wildedaniel.PhotoGlobeAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F8191A552581654A0067C2B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HNM8Z636B6;
+				INFOPLIST_FILE = PhotoGlobeAR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = us.wildedaniel.PhotoGlobeAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F8191A3A258165490067C2B1 /* Build configuration list for PBXProject "PhotoGlobeAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8191A512581654A0067C2B1 /* Debug */,
+				F8191A522581654A0067C2B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8191A532581654A0067C2B1 /* Build configuration list for PBXNativeTarget "PhotoGlobeAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8191A542581654A0067C2B1 /* Debug */,
+				F8191A552581654A0067C2B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F8191A69258166890067C2B1 /* XCRemoteSwiftPackageReference "RealityUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/RealityUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F8191A6A258166890067C2B1 /* RealityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F8191A69258166890067C2B1 /* XCRemoteSwiftPackageReference "RealityUI" */;
+			productName = RealityUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F8191A37258165490067C2B1 /* Project object */;
+}
