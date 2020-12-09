@@ -79,13 +79,13 @@ class Photo {
         base = ModelEntity(mesh: MeshResource.generatePlane(width: 0.9, depth: 0.9), materials: [self.imageMaterial!])
 
         
-        self.button = RUIButton(updateCallback: { myButton in
-            self.text?.setPosition(SIMD3.init(-0.1, -0.1, -0.0), relativeTo: self.text!)
-        })
-        self.button?.orientation = simd_quatf(angle: .pi / 2.0, axis: [1.0,0,0])
-        self.button?.scale = SIMD3.init(x: -0.1, y: -0.1, z: -0.1)
-        self.button?.position = SIMD3.init(x: -0.1, y: 0.1, z: 0.1)
-        self.base?.addChild(self.button!)
+//        self.button = RUIButton(updateCallback: { myButton in
+//            self.text?.setPosition(SIMD3.init(-0.1, -0.1, -0.0), relativeTo: self.text!)
+//        })
+//        self.button?.orientation = simd_quatf(angle: .pi / 2.0, axis: [1.0,0,0])
+//        self.button?.scale = SIMD3.init(x: -0.1, y: -0.1, z: -0.1)
+//        self.button?.position = SIMD3.init(x: -0.1, y: 0.1, z: 0.1)
+//        self.base?.addChild(self.button!)
         
 //        self.stepper = RUIStepper(upTrigger: { _ in
 //        }, downTrigger: { _ in
@@ -126,6 +126,9 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
         super.init()
     
         self.checkAuthorizationForPhotoLibraryAndGet()
+        
+        let pointLight = Lighting().light
+        self.components.set(pointLight)
    
   }
     
@@ -182,5 +185,16 @@ class FlipTable: Entity, HasAnchoring, HasCollision {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.updateCarousel()
         }
+    }
+}
+
+class Lighting: Entity, HasPointLight {
+    
+    required init() {
+        super.init()
+        
+        self.light = PointLightComponent(color: .white,
+                                     intensity: 100000,
+                             attenuationRadius: 20)
     }
 }
