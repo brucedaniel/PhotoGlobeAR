@@ -197,9 +197,9 @@ class Lighting: Entity, HasPointLight {
     
     required init() {
         super.init()
-        self.position = SIMD3.init(0.0, 0.0, 8)
+        self.position = SIMD3.init(0.0, 0.0, 0.0)
         self.light = PointLightComponent(color: .white,
-                                     intensity: 100000,
-                             attenuationRadius: 10)
+                                     intensity: 10000000,
+                             attenuationRadius: 1000000)
     }
 }
