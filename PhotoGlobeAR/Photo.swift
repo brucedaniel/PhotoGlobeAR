@@ -20,14 +20,14 @@ class Photo {
                 mesh: .generateText("\(formatter.string(for: asset?.creationDate) ?? "no date")",
                                   extrusionDepth: 0.05,
                                             font: .systemFont(ofSize: 0.15),
-                                            containerFrame: CGRect(x: 0.0, y: 0.0, width: 2.0, height: 0.5),
+                                            containerFrame: CGRect(x: 0.0, y: 0.0, width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
                                        alignment: .left,
                                    lineBreakMode: .byCharWrapping),
                 materials: [SimpleMaterial(color: UIColor.white, isMetallic: false)]
             )
 
             self.text?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
-            self.text?.setPosition(SIMD3.init(-0.5, -1.5, -0.0), relativeTo: text)
+            self.text?.setPosition(SIMD3.init(Float(-0.5 * defaultCardSize), Float(-1.5 * defaultCardSize), -0.0), relativeTo: text)
             self.base?.addChild(text!)
             
             let manager = PHImageManager.default()
@@ -79,7 +79,7 @@ class Photo {
         
         self.imageMaterial = SimpleMaterial()
             
-        base = ModelEntity(mesh: MeshResource.generatePlane(width: Float(0.9 * defaultCardSize), depth: Float(0.9 * defaultCardSize)), materials: [self.imageMaterial!])
+        base = ModelEntity(mesh: MeshResource.generatePlane(width: Float(0.8 * defaultCardSize), depth: Float(0.8 * defaultCardSize)), materials: [self.imageMaterial!])
         
         
 //        self.button = RUIButton(updateCallback: { myButton in
