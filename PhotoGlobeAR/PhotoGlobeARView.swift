@@ -4,7 +4,6 @@ import Combine
 
 class PhotoGlobeARView: ARView, ARSessionDelegate {
   let coachingOverlay = ARCoachingOverlayView()
-  var tableAdded = false
     
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
@@ -18,40 +17,20 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
     }
     
     private func setup() {
-        self.enableRealityUIGestures(.all)
+        self.enableRealityUIGestures([])
         let config = ARWorldTrackingConfiguration()
-        config.planeDetection = .horizontal
+        config.planeDetection = [.horizontal,.vertical]
         self.session.run(config, options: [])
 
         self.addCoaching()
         self.session.delegate = self
-        self.debugOptions.insert([.showSceneUnderstanding, .showWorldOrigin, .showAnchorOrigins])
+        //self.debugOptions.insert([.showSceneUnderstanding, .showWorldOrigin, .showAnchorOrigins])
     }
-    
-  var status: SessionStatus = .initCoaching {
-    didSet {
-      switch oldValue {
-      case .positioning:
-        changedFromPositioningStatus()
-      default:
-        break
-        //print("status was: \(status)")
-      }
-      switch status {
-      case .positioning:
-        setToPositioningStatus()
-      default:
-        break
-        //print("status is: \(status)")
-      }
-    }
-  }
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
   
     }
     
-  // MARK: - Touch Gesture Variables
   var canTap = true
   var globe: PhotoGlobe? = nil
   var installedGestures: [EntityGestureRecognizer] = []
@@ -67,18 +46,13 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
     }
     
   func addGlobe() {
-    
-  
       self.globe = PhotoGlobe()
-      self.tableAdded = true
-      self.status = .planeSearching
 
       self.waitForAnchor = self.scene.subscribe(
         to: SceneEvents.AnchoredStateChanged.self,
         on: globe
       ) { event in
         if event.isAnchored {
-          self.status = .positioning
           DispatchQueue.main.async {
             self.waitForAnchor?.cancel()
             self.waitForAnchor = nil
@@ -86,7 +60,21 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
         }
       }
     self.scene.anchors.append(globe!)
-   
   }
- 
+}
+
+extension PhotoGlobeARView: ARCoachingOverlayViewDelegate {
+  func addCoaching() {
+    self.coachingOverlay.delegate = self
+    self.coachingOverlay.session = self.session
+    self.coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+    self.coachingOverlay.goal = .anyPlane
+    self.coachingOverlay.frame = self.bounds
+    self.addSubview(self.coachingOverlay)
+  }
+  public func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+    coachingOverlayView.activatesAutomatically = false
+    self.addGlobe()
+  }
 }

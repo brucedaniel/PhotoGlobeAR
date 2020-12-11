@@ -21,7 +21,6 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         
         let pointLight = Lighting().light
         self.components.set(pointLight)
-   
   }
     
     private func checkAuthorizationForPhotoLibraryAndGet(){

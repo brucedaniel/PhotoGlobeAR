@@ -15,8 +15,6 @@
 		F8191A4C2581654A0067C2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8191A4B2581654A0067C2B1 /* Assets.xcassets */; };
 		F8191A4F2581654A0067C2B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8191A4D2581654A0067C2B1 /* LaunchScreen.storyboard */; };
 		F8191A5F258166170067C2B1 /* PhotoGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A57258166170067C2B1 /* PhotoGlobe.swift */; };
-		F8191A64258166170067C2B1 /* PhotoGlobeARView+Coaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5C258166170067C2B1 /* PhotoGlobeARView+Coaching.swift */; };
-		F8191A65258166170067C2B1 /* PhotoGlobeARView+SessionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5D258166170067C2B1 /* PhotoGlobeARView+SessionStatus.swift */; };
 		F8191A66258166170067C2B1 /* PhotoGlobeARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */; };
 		F8191A6B258166890067C2B1 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = F8191A6A258166890067C2B1 /* RealityUI */; };
 /* End PBXBuildFile section */
@@ -32,8 +30,6 @@
 		F8191A4E2581654A0067C2B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8191A502581654A0067C2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8191A57258166170067C2B1 /* PhotoGlobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGlobe.swift; sourceTree = "<group>"; };
-		F8191A5C258166170067C2B1 /* PhotoGlobeARView+Coaching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoGlobeARView+Coaching.swift"; sourceTree = "<group>"; };
-		F8191A5D258166170067C2B1 /* PhotoGlobeARView+SessionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoGlobeARView+SessionStatus.swift"; sourceTree = "<group>"; };
 		F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGlobeARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,8 +66,6 @@
 			children = (
 				F8191A57258166170067C2B1 /* PhotoGlobe.swift */,
 				F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */,
-				F8191A5C258166170067C2B1 /* PhotoGlobeARView+Coaching.swift */,
-				F8191A5D258166170067C2B1 /* PhotoGlobeARView+SessionStatus.swift */,
 				F8191A42258165490067C2B1 /* AppDelegate.swift */,
 				F8191A44258165490067C2B1 /* ViewController.swift */,
 				F8191A46258165490067C2B1 /* Experience.rcproject */,
@@ -160,8 +154,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8191A64258166170067C2B1 /* PhotoGlobeARView+Coaching.swift in Sources */,
-				F8191A65258166170067C2B1 /* PhotoGlobeARView+SessionStatus.swift in Sources */,
 				B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */,
 				F8191A45258165490067C2B1 /* ViewController.swift in Sources */,
 				F8191A5F258166170067C2B1 /* PhotoGlobe.swift in Sources */,
