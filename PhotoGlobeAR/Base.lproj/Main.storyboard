@@ -13,12 +13,27 @@
                     <arView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="PhotoGlobeARView" customModule="PhotoGlobeAR" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6kR-D2-eMs" appends="YES" id="ES9-Uj-ekC"/>
+                            <outletCollection property="gestureRecognizers" destination="JkI-Af-CBf" appends="YES" id="mg7-hz-NTc"/>
+                        </connections>
                     </arView>
                     <connections>
                         <outlet property="arView" destination="8bC-Xf-vdC" id="TPV-4x-avp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="6kR-D2-eMs">
+                    <connections>
+                        <action selector="leftSwipe" destination="8bC-Xf-vdC" id="tJ9-z7-35L"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="JkI-Af-CBf">
+                    <connections>
+                        <action selector="rightSwipe" destination="8bC-Xf-vdC" id="6bY-bz-Ijv"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="138" y="134"/>
         </scene>

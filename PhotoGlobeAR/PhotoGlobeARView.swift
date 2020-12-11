@@ -58,6 +58,14 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
 
   var waitForAnchor: Cancellable?
 
+    @IBAction func leftSwipe() {
+        self.globe?.radialVelocity = -0.1
+    }
+    
+    @IBAction func rightSwipe() {
+        self.globe?.radialVelocity = 0.1
+    }
+    
   func addGlobe() {
     
   
