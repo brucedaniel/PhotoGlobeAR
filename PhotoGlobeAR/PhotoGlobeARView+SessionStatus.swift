@@ -11,7 +11,7 @@ enum SessionStatus {
 extension PhotoGlobeARView {
 
   func changedFromPositioningStatus() {
-    self.flipTable?.collision = nil
+    self.globe?.collision = nil
     self.confirmButton?.removeFromParent()
     self.installedGestures = self.installedGestures.filter({ (recogniser) -> Bool in
       recogniser.isEnabled = false
@@ -19,7 +19,7 @@ extension PhotoGlobeARView {
     })
   }
   func setToPositioningStatus() {
-    guard let table = self.flipTable else {
+    guard let table = self.globe else {
       return
     }
     table.collision = CollisionComponent(shapes: [.generateBox(size: [4, 0.4, 4])])

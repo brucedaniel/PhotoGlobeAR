@@ -66,7 +66,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
   var touchStartedOn: FlipCard? = nil
   var currentlyFlipped: FlipCard? = nil
   var canTap = true
-  var flipTable: FlipTable? = nil
+  var globe: PhotoGlobe? = nil
   var confirmButton: ARButton?
   var installedGestures: [EntityGestureRecognizer] = []
 
@@ -74,18 +74,16 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
 
   var sessionData = SessionData()
 
-  /// Add the FlipTable object
-  func addFlipTable() {
+  func addGlobe() {
     
   
-      self.flipTable = FlipTable()
+      self.globe = PhotoGlobe()
       self.tableAdded = true
       self.status = .planeSearching
 
-      // Subscribe to the AnchoredStateChanged event for flipTable
       self.waitForAnchor = self.scene.subscribe(
         to: SceneEvents.AnchoredStateChanged.self,
-        on: flipTable
+        on: globe
       ) { event in
         if event.isAnchored {
           self.status = .positioning
@@ -95,7 +93,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
           }
         }
       }
-    self.scene.anchors.append(flipTable!)
+    self.scene.anchors.append(globe!)
    
   }
  

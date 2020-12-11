@@ -14,6 +14,6 @@ extension PhotoGlobeARView: ARCoachingOverlayViewDelegate {
   }
   public func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
     coachingOverlayView.activatesAutomatically = false
-    self.addFlipTable()
+    self.addGlobe()
   }
 }

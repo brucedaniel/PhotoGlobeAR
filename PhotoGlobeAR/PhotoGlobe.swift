@@ -3,7 +3,7 @@ import UIKit
 import Photos
 import RealityUI
 
-enum FlipTableError: Error {
+enum PhotoGlobeError: Error {
   case unevenDimensions
   case dimensionsTooLarge
 }
@@ -63,7 +63,7 @@ class Photo {
     var text : ModelEntity?
     var base : ModelEntity?
     var imageMaterial : SimpleMaterial?
-    let table :FlipTable
+    let table :PhotoGlobe
     var button : RUIButton?
     var stepper : RUIStepper?
     var slider : RUISlider?
@@ -71,7 +71,7 @@ class Photo {
     var index = -1
     var defaultCardSize = 3.0
     
-    init(table:FlipTable) {
+    init(table:PhotoGlobe) {
         self.table = table
         
         self.imageMaterial = SimpleMaterial()
@@ -116,7 +116,7 @@ class Photo {
         
     }
 }
-class FlipTable: Entity, HasAnchoring, HasCollision {
+class PhotoGlobe: Entity, HasAnchoring, HasCollision {
   var allPhotos : PHFetchResult<PHAsset>?
   var photos = [Photo].init()
   var exclusions = [PHAsset].init()

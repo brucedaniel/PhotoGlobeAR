@@ -13,7 +13,7 @@
 		F8191A4A258165490067C2B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8191A48258165490067C2B1 /* Main.storyboard */; };
 		F8191A4C2581654A0067C2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8191A4B2581654A0067C2B1 /* Assets.xcassets */; };
 		F8191A4F2581654A0067C2B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8191A4D2581654A0067C2B1 /* LaunchScreen.storyboard */; };
-		F8191A5F258166170067C2B1 /* FlipTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A57258166170067C2B1 /* FlipTable.swift */; };
+		F8191A5F258166170067C2B1 /* PhotoGlobe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A57258166170067C2B1 /* PhotoGlobe.swift */; };
 		F8191A60258166170067C2B1 /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A58258166170067C2B1 /* CardComponent.swift */; };
 		F8191A61258166170067C2B1 /* FlipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A59258166170067C2B1 /* FlipCard.swift */; };
 		F8191A62258166170067C2B1 /* ARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A5A258166170067C2B1 /* ARButton.swift */; };
@@ -32,7 +32,7 @@
 		F8191A4B2581654A0067C2B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8191A4E2581654A0067C2B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8191A502581654A0067C2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8191A57258166170067C2B1 /* FlipTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipTable.swift; sourceTree = "<group>"; };
+		F8191A57258166170067C2B1 /* PhotoGlobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGlobe.swift; sourceTree = "<group>"; };
 		F8191A58258166170067C2B1 /* CardComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
 		F8191A59258166170067C2B1 /* FlipCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipCard.swift; sourceTree = "<group>"; };
 		F8191A5A258166170067C2B1 /* ARButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARButton.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 				F8191A5A258166170067C2B1 /* ARButton.swift */,
 				F8191A58258166170067C2B1 /* CardComponent.swift */,
 				F8191A59258166170067C2B1 /* FlipCard.swift */,
-				F8191A57258166170067C2B1 /* FlipTable.swift */,
+				F8191A57258166170067C2B1 /* PhotoGlobe.swift */,
 				F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */,
 				F8191A5C258166170067C2B1 /* PhotoGlobeARView+Coaching.swift */,
 				F8191A5D258166170067C2B1 /* PhotoGlobeARView+SessionStatus.swift */,
@@ -170,7 +170,7 @@
 				F8191A65258166170067C2B1 /* PhotoGlobeARView+SessionStatus.swift in Sources */,
 				F8191A62258166170067C2B1 /* ARButton.swift in Sources */,
 				F8191A45258165490067C2B1 /* ViewController.swift in Sources */,
-				F8191A5F258166170067C2B1 /* FlipTable.swift in Sources */,
+				F8191A5F258166170067C2B1 /* PhotoGlobe.swift in Sources */,
 				F8191A43258165490067C2B1 /* AppDelegate.swift in Sources */,
 				F8191A66258166170067C2B1 /* PhotoGlobeARView.swift in Sources */,
 				F8191A60258166170067C2B1 /* CardComponent.swift in Sources */,
