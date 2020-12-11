@@ -49,7 +49,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         
         print("\(self.allPhotos!)")
         
-        for index in 0...20 {
+        for index in 0...100 {
             let newPhoto = Photo(globe: self)
             newPhoto.index = index
             newPhoto.asset = self.allPhotos?.object(at: index)
@@ -72,7 +72,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
             photo.base?.orientation = simd_quatf(angle: .pi / 2.0, axis: [1.0,0,0])
             photo.base?.orientation = photo.base!.orientation * simd_quatf(angle: Float(angle) + .pi / 2.0, axis: [0.0,0,1.0])
             photo.base?.position.x = Float(defaultCarouselRadius * cos(angle))
-            photo.base?.position.y = Float(0.5)
+            photo.base?.position.y = Float(Double(index % 5) * photo.defaultCardSize) - Float(photo.defaultCardSize * 2)
             photo.base?.position.z = Float(defaultCarouselRadius * sin(angle))
         }
         self.carouselAngle += radialVelocity
