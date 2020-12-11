@@ -12,7 +12,6 @@ extension PhotoGlobeARView {
 
   func changedFromPositioningStatus() {
     self.globe?.collision = nil
-    self.confirmButton?.removeFromParent()
     self.installedGestures = self.installedGestures.filter({ (recogniser) -> Bool in
       recogniser.isEnabled = false
       return false

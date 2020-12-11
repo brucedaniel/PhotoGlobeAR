@@ -7,7 +7,6 @@ extension PhotoGlobeARView: ARCoachingOverlayViewDelegate {
     self.coachingOverlay.session = self.session
     self.coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-    // MARK: CoachingGoal
     self.coachingOverlay.goal = .horizontalPlane
     
     self.addSubview(self.coachingOverlay)

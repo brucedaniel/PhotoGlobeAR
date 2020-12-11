@@ -48,15 +48,12 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
   }
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        // Do something with the new transform
-        //let currentTransform = frame.camera.transform
-        //print(currentTransform)
+  
     }
     
   // MARK: - Touch Gesture Variables
   var canTap = true
   var globe: PhotoGlobe? = nil
-  var confirmButton: ARButton?
   var installedGestures: [EntityGestureRecognizer] = []
 
   var waitForAnchor: Cancellable?
