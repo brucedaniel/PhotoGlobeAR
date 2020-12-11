@@ -18,7 +18,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
     
     private func setup() {
         
-        self.enableRealityUIGestures([])
+        self.enableRealityUIGestures([.all])
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal,.vertical]
         self.session.run(config, options: [])
@@ -34,7 +34,6 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
     
   var canTap = true
   var globe: PhotoGlobe? = nil
-  var installedGestures: [EntityGestureRecognizer] = []
 
   var waitForAnchor: Cancellable?
 

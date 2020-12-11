@@ -3,26 +3,33 @@ import UIKit
 import Photos
 import RealityUI
 
-enum PhotoGlobeError: Error {
-  case unevenDimensions
-  case dimensionsTooLarge
-}
-
 class PhotoGlobe: Entity, HasAnchoring, HasCollision {
-  var allPhotos : PHFetchResult<PHAsset>?
-  var photos = [Photo].init()
-  let arView:ARView?
-  var exclusions = [PHAsset].init()
-  var carouselAngle = 0.0
- 
+    var allPhotos : PHFetchResult<PHAsset>?
+    var photos = [Photo].init()
+    let arView:ARView?
+    var exclusions = [PHAsset].init()
+    var carouselAngle = 0.0
+    var numPhotos = 100
+    var numRows = 2
+    
+    
   init(view:ARView) {
         arView = view
         super.init()
     
-        self.checkAuthorizationForPhotoLibraryAndGet()
+    self.checkAuthorizationForPhotoLibraryAndGet()
         
-        let pointLight = Lighting().light
-        self.components.set(pointLight)
+    let pointLight = Lighting().light
+    self.components.set(pointLight)
+    
+    
+    let stepper = RUIStepper(upTrigger: { _ in
+        self.numRows += 1
+    }, downTrigger: { _ in
+        self.numRows -= 1
+    })
+    stepper.scale = SIMD3.init(x: 0.05, y: 0.05, z: 0.05)
+    self.addChild(stepper)
         
   }
     
@@ -56,13 +63,13 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         
         print("\(self.allPhotos!)")
         
-        for index in 0...100 {
+        for index in 0...self.numPhotos {
             let newPhoto = Photo(globe: self)
             newPhoto.index = index
             newPhoto.asset = self.allPhotos?.object(at: index)
             self.photos.append(newPhoto)
             self.addChild(newPhoto.base!)
-            self.arView?.installGestures(for: newPhoto.base!)
+            //self.arView?.installGestures(for: newPhoto.base!)
         }
             
         self.updateCarousel()
@@ -75,13 +82,17 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
     
     func updateCarousel() {
         for index in 0...self.photos.count-1 {
-            let angle = self.self.carouselAngle + Double(Double(index) * .pi * 2.0) / Double(self.photos.count)
+            let scaleFactor =  (Float(self.numRows) / Float(self.photos.count)) * 60
+            
+            let angle = self.carouselAngle + Double(Double(index / self.numRows) * .pi * 2.0) / Double(self.photos.count / self.numRows)
             let photo = self.photos[index]
             photo.base?.orientation = simd_quatf(angle: .pi / 2.0, axis: [1.0,0,0])
             photo.base?.orientation = photo.base!.orientation * simd_quatf(angle: Float(angle) + .pi / 2.0, axis: [0.0,0,1.0])
             photo.base?.position.x = Float(defaultCarouselRadius * cos(angle))
-            photo.base?.position.y = Float(Double(index % 5) * photo.defaultCardSize) - Float(photo.defaultCardSize * 2)
-            photo.base?.position.z = Float(defaultCarouselRadius * sin(angle))
+            let heightFactor = photo.defaultCardSize * Double(scaleFactor)
+            photo.base?.position.y = Float(Double(index % self.numRows) * heightFactor) - Float(heightFactor * 2)
+            photo.base?.position.z = Float(defaultCarouselRadius * sin(angle))            
+            photo.base?.setScale(SIMD3(x: scaleFactor, y: scaleFactor, z: scaleFactor), relativeTo: nil)
         }
         self.carouselAngle += radialVelocity
         radialVelocity *= defaultRadialVelocityDecay
@@ -96,7 +107,7 @@ class Lighting: Entity, HasPointLight {
     
     required init() {
         super.init()
-        self.position = SIMD3.init(0.0, 0.0, 0.0)
+        self.position = SIMD3.init(0.0, 0.0, 3.0)
         self.light = PointLightComponent(color: .white,
                                      intensity: 10000000,
                              attenuationRadius: 1000000)

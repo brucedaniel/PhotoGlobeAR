@@ -19,7 +19,7 @@ class Photo {
             self.text = ModelEntity(
                 mesh: .generateText("\(formatter.string(for: asset?.creationDate) ?? "no date")",
                                   extrusionDepth: 0.05,
-                                  font: UIFont(name: "Futura-Medium", size: 0.5)!,
+                                  font: UIFont(name: "Futura-Medium", size: CGFloat(self.defaultCardSize * 0.15))!,
                                             containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
                                        alignment: .left,
                                    lineBreakMode: .byCharWrapping),
@@ -33,7 +33,7 @@ class Photo {
             self.textFront = ModelEntity(
                 mesh: .generateText("\(formatter.string(for: asset?.creationDate) ?? "no date")",
                                   extrusionDepth: 0.01,
-                                  font: UIFont(name: "Futura-Medium", size: 0.5)!,
+                                  font: UIFont(name: "Futura-Medium", size: CGFloat(self.defaultCardSize * 0.15))!,
                                             containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
                                        alignment: .left,
                                    lineBreakMode: .byCharWrapping),
@@ -90,7 +90,7 @@ class Photo {
     var slider : RUISlider?
     var uiSwitch : RUISwitch?
     var index = -1
-    var defaultCardSize = 3.0
+    var defaultCardSize = 1.0
     
     init(globe:PhotoGlobe) {
         self.globe = globe
@@ -99,7 +99,15 @@ class Photo {
             
         base = ModelEntity(mesh: MeshResource.generatePlane(width: Float(0.8 * defaultCardSize), depth: Float(0.8 * defaultCardSize)), materials: [self.imageMaterial!])
         
-        
+        if (false) {
+            self.button = RUIButton(updateCallback: { myButton in
+                        self.text?.setPosition(SIMD3.init(-0.1, -0.1, -0.0), relativeTo: self.text!)
+                    })
+            self.button?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
+            self.button?.scale = SIMD3.init(x: 1.0, y: 1.0, z: 1.0)
+            self.button?.position = SIMD3.init(x: 0.0, y: 0.0, z: 0.1)
+            self.base?.addChild(self.button!)
+        }
     }
 }
 
