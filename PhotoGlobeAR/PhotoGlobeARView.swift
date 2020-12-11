@@ -2,7 +2,7 @@ import RealityKit
 import ARKit
 import Combine
 
-struct GameData {
+struct SessionData {
   var dimensions: SIMD2<Int> = [4,4]
   var cardsFound: Int = 0
   var totalCards: Int {
@@ -37,7 +37,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
         self.debugOptions.insert([.showSceneUnderstanding, .showWorldOrigin, .showAnchorOrigins])
     }
     
-  var status: GameStatus = .initCoaching {
+  var status: SessionStatus = .initCoaching {
     didSet {
       switch oldValue {
       case .positioning:
@@ -72,7 +72,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
 
   var waitForAnchor: Cancellable?
 
-  var gameData = GameData()
+  var sessionData = SessionData()
 
   /// Add the FlipTable object
   func addFlipTable() {

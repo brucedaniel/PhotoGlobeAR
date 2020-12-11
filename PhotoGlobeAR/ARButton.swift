@@ -1,6 +1,6 @@
 import RealityKit
 
-class ARButton: Entity, HasCollision, HasModel, HasTap {
+class ARButton: Entity, HasCollision, HasModel {
   var tapAction: (() -> Void)?
 
   init(transform: Transform, model: ModelComponent, tapAction: (() -> Void)? = nil) {

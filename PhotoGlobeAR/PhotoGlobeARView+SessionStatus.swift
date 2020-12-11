@@ -1,6 +1,6 @@
 import RealityKit
 
-enum GameStatus {
+enum SessionStatus {
   case initCoaching
   case planeSearching
   case positioning
