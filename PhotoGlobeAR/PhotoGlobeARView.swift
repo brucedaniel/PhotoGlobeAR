@@ -17,6 +17,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
     }
     
     private func setup() {
+        
         self.enableRealityUIGestures([])
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal,.vertical]
@@ -46,7 +47,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
     }
     
   func addGlobe() {
-      self.globe = PhotoGlobe()
+      self.globe = PhotoGlobe(view: self)
 
       self.waitForAnchor = self.scene.subscribe(
         to: SceneEvents.AnchoredStateChanged.self,

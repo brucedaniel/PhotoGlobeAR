@@ -11,17 +11,24 @@ enum PhotoGlobeError: Error {
 class PhotoGlobe: Entity, HasAnchoring, HasCollision {
   var allPhotos : PHFetchResult<PHAsset>?
   var photos = [Photo].init()
+  let arView:ARView?
   var exclusions = [PHAsset].init()
   var carouselAngle = 0.0
  
-    required init() {
+  init(view:ARView) {
+        arView = view
         super.init()
     
         self.checkAuthorizationForPhotoLibraryAndGet()
         
         let pointLight = Lighting().light
         self.components.set(pointLight)
+        
   }
+    
+    required init() {
+        fatalError("init() has not been implemented")
+    }
     
     private func checkAuthorizationForPhotoLibraryAndGet(){
         let status = PHPhotoLibrary.authorizationStatus()
@@ -55,6 +62,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
             newPhoto.asset = self.allPhotos?.object(at: index)
             self.photos.append(newPhoto)
             self.addChild(newPhoto.base!)
+            self.arView?.installGestures(for: newPhoto.base!)
         }
             
         self.updateCarousel()
