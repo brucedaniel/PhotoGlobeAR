@@ -23,7 +23,7 @@ class Photo {
                                             containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
                                        alignment: .left,
                                    lineBreakMode: .byCharWrapping),
-                materials: [SimpleMaterial(color: UIColor.cyan, isMetallic: false)]
+                materials: [SimpleMaterial(color: UIColor(hex: "#bc658dff")!, isMetallic: false)]
             )
 
             self.text?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
@@ -37,7 +37,7 @@ class Photo {
                                             containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
                                        alignment: .left,
                                    lineBreakMode: .byCharWrapping),
-                materials: [SimpleMaterial(color: UIColor.magenta, isMetallic: false)]
+                materials: [SimpleMaterial(color: UIColor(hex: "#82c4c3ff")!, isMetallic: false)]
             )
 
             self.textFront?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
@@ -100,5 +100,33 @@ class Photo {
         base = ModelEntity(mesh: MeshResource.generatePlane(width: Float(0.8 * defaultCardSize), depth: Float(0.8 * defaultCardSize)), materials: [self.imageMaterial!])
         
         
+    }
+}
+
+extension UIColor {
+    public convenience init?(hex: String) {
+        let r, g, b, a: CGFloat
+
+        if hex.hasPrefix("#") {
+            let start = hex.index(hex.startIndex, offsetBy: 1)
+            let hexColor = String(hex[start...])
+
+            if hexColor.count == 8 {
+                let scanner = Scanner(string: hexColor)
+                var hexNumber: UInt64 = 0
+
+                if scanner.scanHexInt64(&hexNumber) {
+                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+                    a = CGFloat(hexNumber & 0x000000ff) / 255
+
+                    self.init(red: r, green: g, blue: b, alpha: a)
+                    return
+                }
+            }
+        }
+
+        return nil
     }
 }

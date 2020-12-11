@@ -14,10 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UIFont.familyNames.forEach({ familyName in
-                    let fontNames = UIFont.fontNames(forFamilyName: familyName)
-                    print(familyName, fontNames)
-                })
+//        UIFont.familyNames.forEach({ familyName in
+//                    let fontNames = UIFont.fontNames(forFamilyName: familyName)
+//                    print(familyName, fontNames)
+//                })
         
         return true
     }
