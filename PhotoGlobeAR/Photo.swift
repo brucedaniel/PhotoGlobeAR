@@ -29,10 +29,10 @@ class Photo {
             self.text?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
             self.text?.setPosition(SIMD3.init(Float(-0.5 * defaultCardSize), Float(-1.5 * defaultCardSize), -0.0), relativeTo: text)
             
-            
+            let frontDepth = Float(0.01)
             self.textFront = ModelEntity(
                 mesh: .generateText("\(formatter.string(for: asset?.creationDate) ?? "no date")",
-                                  extrusionDepth: 0.01,
+                                  extrusionDepth: frontDepth,
                                   font: UIFont(name: "Futura-Medium", size: CGFloat(self.defaultCardSize * 0.15))!,
                                             containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
                                        alignment: .left,
@@ -41,7 +41,7 @@ class Photo {
             )
 
             self.textFront?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
-            self.textFront?.setPosition(SIMD3.init(0, 0, 0.10), relativeTo: text)
+            self.textFront?.setPosition(SIMD3.init(0, 0, frontDepth * 3), relativeTo: text)
             
             self.base?.addChild(text!)
             self.base?.addChild(textFront!)

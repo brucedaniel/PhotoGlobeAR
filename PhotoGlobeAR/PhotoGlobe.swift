@@ -69,7 +69,6 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
             newPhoto.asset = self.allPhotos?.object(at: index)
             self.photos.append(newPhoto)
             self.addChild(newPhoto.base!)
-            //self.arView?.installGestures(for: newPhoto.base!)
         }
             
         self.updateCarousel()
@@ -91,7 +90,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
             photo.base?.position.x = Float(defaultCarouselRadius * cos(angle))
             let heightFactor = photo.defaultCardSize * Double(scaleFactor)
             photo.base?.position.y = Float(Double(index % self.numRows) * heightFactor) - Float(heightFactor * 2)
-            photo.base?.position.z = Float(defaultCarouselRadius * sin(angle))            
+            photo.base?.position.z = Float(defaultCarouselRadius * sin(angle))
             photo.base?.setScale(SIMD3(x: scaleFactor, y: scaleFactor, z: scaleFactor), relativeTo: nil)
         }
         self.carouselAngle += radialVelocity
