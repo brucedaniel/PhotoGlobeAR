@@ -2,14 +2,6 @@ import RealityKit
 import ARKit
 import Combine
 
-struct SessionData {
-  var dimensions: SIMD2<Int> = [4,4]
-  var cardsFound: Int = 0
-  var totalCards: Int {
-    dimensions[0] * dimensions[1]
-  }
-}
-
 class PhotoGlobeARView: ARView, ARSessionDelegate {
   let coachingOverlay = ARCoachingOverlayView()
   var tableAdded = false
@@ -30,7 +22,6 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = .horizontal
         self.session.run(config, options: [])
-        CardComponent.registerComponent()
 
         self.addCoaching()
         self.session.delegate = self
@@ -63,16 +54,12 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
     }
     
   // MARK: - Touch Gesture Variables
-  var touchStartedOn: FlipCard? = nil
-  var currentlyFlipped: FlipCard? = nil
   var canTap = true
   var globe: PhotoGlobe? = nil
   var confirmButton: ARButton?
   var installedGestures: [EntityGestureRecognizer] = []
 
   var waitForAnchor: Cancellable?
-
-  var sessionData = SessionData()
 
   func addGlobe() {
     
