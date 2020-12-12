@@ -11,6 +11,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
     var carouselAngle = 0.0
     var numPhotos = 100
     var numRows = 2
+    var heightOffset = 2.0
     
     
   init(view:ARView) {
@@ -25,11 +26,27 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
     
     let stepper = RUIStepper(upTrigger: { _ in
         self.numRows += 1
+        if self.numRows > 10 {
+            self.numRows = 10
+        }
     }, downTrigger: { _ in
         self.numRows -= 1
+        if self.numRows < 0 {
+            self.numRows = 0
+        }
     })
     stepper.scale = SIMD3.init(x: 0.05, y: 0.05, z: 0.05)
     self.addChild(stepper)
+    
+    let slider = RUISlider(
+        slider: SliderComponent(startingValue: 0.2, isContinuous: true)
+    ) { (slider, _) in
+        self.heightOffset = Double(slider.value * 10)
+    }
+    slider.scale = SIMD3.init(x: 0.02, y: 0.02, z: 0.02)
+    slider.position = SIMD3.init(x: 0.1, y: 0.1, z: 0.0)
+    slider.orientation = simd_quatf(angle: .pi / 2.0, axis: [0,0,1])
+    self.addChild(slider)
         
   }
     
@@ -89,7 +106,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
             photo.base?.orientation = photo.base!.orientation * simd_quatf(angle: Float(angle) + .pi / 2.0, axis: [0.0,0,1.0])
             photo.base?.position.x = Float(defaultCarouselRadius * cos(angle))
             let heightFactor = photo.defaultCardSize * Double(scaleFactor)
-            photo.base?.position.y = Float(Double(index % self.numRows) * heightFactor) - Float(heightFactor * 2)
+            photo.base?.position.y = Float(Double(index % self.numRows) * heightFactor) - Float(heightFactor * self.heightOffset)
             photo.base?.position.z = Float(defaultCarouselRadius * sin(angle))
             photo.base?.setScale(SIMD3(x: scaleFactor, y: scaleFactor, z: scaleFactor), relativeTo: nil)
         }
