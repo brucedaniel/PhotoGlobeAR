@@ -54,7 +54,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
     let albumScroll = RUISlider(
         slider: SliderComponent(startingValue: 0.0, isContinuous: false)
     ) { (albumScroll, _) in
-        self.albumPositionScrollStart = Int(albumScroll.value * Float(self.allPhotos!.count - self.numRows))
+        self.albumPositionScrollStart = Int(albumScroll.value * Float(self.allPhotos!.count - self.numRows - 1))
         print("scroll offset: \(self.albumPositionScrollStart)")
         DispatchQueue.main.async {
             self.updateAssets()
@@ -89,7 +89,10 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
     }
     
     func updateAssets() {
-        for index in 0...self.numPhotos {
+        for index in 0...self.numPhotos-1 {
+            if index + self.albumPositionScrollStart >= self.allPhotos!.count {
+                return
+            }
             let photo = self.photos[index]
             photo.index = index
             photo.asset = self.allPhotos!.object(at: index + self.albumPositionScrollStart)
@@ -102,10 +105,8 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",ascending: false)]
         fetchOptions.predicate = NSPredicate(format: "mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
         self.allPhotos = PHAsset.fetchAssets(with: fetchOptions)
-        
-        print("\(self.allPhotos!)")
-        
-        for index in 0...self.numPhotos {
+                
+        for _ in 0...self.numPhotos-1 {
             let newPhoto = Photo(globe: self)
             self.photos.append(newPhoto)
             self.addChild(newPhoto.base!)

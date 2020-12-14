@@ -12,10 +12,21 @@ import Photos
 import RealityUI
 
 class Photo {
+    let frontDepth = Float(0.01)
+    let formatter = DateFormatter()
+    
+    
     var asset : PHAsset? {
         didSet(newAsset) {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMM dd"
+            
+            if let _ = self.text {
+                self.base?.removeChild(self.text!)
+            }
+            
+            if let _ = self.textFront {
+                self.base?.removeChild(self.textFront!)
+            }
+            
             self.text = ModelEntity(
                 mesh: .generateText("\(formatter.string(for: asset?.creationDate) ?? "no date")",
                                   extrusionDepth: 0.05,
@@ -29,7 +40,6 @@ class Photo {
             self.text?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
             self.text?.setPosition(SIMD3.init(Float(-0.5 * defaultCardSize), Float(-1.5 * defaultCardSize), -0.0), relativeTo: text)
             
-            let frontDepth = Float(0.01)
             self.textFront = ModelEntity(
                 mesh: .generateText("\(formatter.string(for: asset?.creationDate) ?? "no date")",
                                   extrusionDepth: frontDepth,
@@ -49,10 +59,10 @@ class Photo {
             let filename = self.getDocumentsDirectory().appendingPathComponent("PhotoGlobe_thumb_\(self.asset.hashValue).png")
             
             if FileManager.default.fileExists(atPath: filename.path){
-                print("CACHE HIT")
+//                print("CACHE HIT")
                 self.url = filename
             } else {
-                print("CACHE MISS")
+//                print("CACHE MISS")
                 let manager = PHImageManager.default()
                     let option = PHImageRequestOptions()
                 option.isSynchronous = true
@@ -87,6 +97,16 @@ class Photo {
             self.imageMaterial?.baseColor = try! MaterialColorParameter.texture(TextureResource.load(contentsOf:self.url!))
             self.base?.model?.materials.removeAll()
             self.base?.model?.materials.append(self.imageMaterial!)
+            
+            self.textFront = ModelEntity(
+                mesh: .generateText("\(formatter.string(for: asset?.creationDate) ?? "no date")",
+                                  extrusionDepth: frontDepth,
+                                  font: UIFont(name: "Futura-Medium", size: CGFloat(self.defaultCardSize * 0.15))!,
+                                            containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
+                                       alignment: .left,
+                                   lineBreakMode: .byCharWrapping),
+                materials: [SimpleMaterial(color: UIColor(hex: "#82c4c3ff")!, isMetallic: false)]
+            )
         }
     }
     var text : ModelEntity?
@@ -103,7 +123,7 @@ class Photo {
     
     init(globe:PhotoGlobe) {
         self.globe = globe
-        
+        formatter.dateFormat = "MMM dd"
         self.imageMaterial = SimpleMaterial()
             
         base = ModelEntity(mesh: MeshResource.generatePlane(width: Float(0.8 * defaultCardSize), depth: Float(0.8 * defaultCardSize)), materials: [self.imageMaterial!])
