@@ -46,21 +46,30 @@ class Photo {
             self.base?.addChild(text!)
             self.base?.addChild(textFront!)
             
+            let filename = self.getDocumentsDirectory().appendingPathComponent("PhotoGlobe_thumb_\(self.asset.hashValue).png")
             
-            let manager = PHImageManager.default()
-                let option = PHImageRequestOptions()
-            option.isSynchronous = true
-     
-            manager.requestImage(for: asset!, targetSize: CGSize(width: 400.0, height: 400.0), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-                if let data = result!.pngData() {
-                    let filename = self.getDocumentsDirectory().appendingPathComponent("PhotoGlobe_thumb_\(self.index).png")
+            if FileManager.default.fileExists(atPath: filename.path){
+                print("CACHE HIT")
+                self.url = filename
+            } else {
+                print("CACHE MISS")
+                let manager = PHImageManager.default()
+                    let option = PHImageRequestOptions()
+                option.isSynchronous = true
+         
+                manager.requestImage(for: asset!, targetSize: CGSize(width: 400.0, height: 400.0), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+                    if let data = result!.pngData() {
+                        
+                        
+                        try? data.write(to: filename)
+                        //print("filename: \(filename)")
+                        self.url = filename
+                    }
                     
-                    try? data.write(to: filename)
-                    //print("filename: \(filename)")
-                    self.url = filename
-                }
-                
-            })
+                })
+            }
+            
+            
         }
     }
     

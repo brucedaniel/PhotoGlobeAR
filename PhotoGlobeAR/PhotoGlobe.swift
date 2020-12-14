@@ -12,6 +12,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
     var numPhotos = 100
     var numRows = 2
     var heightOffset = 2.0
+    var albumPositionScrollStart = 0
     
     
   init(view:ARView) {
@@ -28,6 +29,8 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         self.numRows += 1
         if self.numRows > 10 {
             self.numRows = 10
+        } else if self.numRows < 1 {
+            self.numRows = 1
         }
     }, downTrigger: { _ in
         self.numRows -= 1
@@ -38,15 +41,29 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
     stepper.scale = SIMD3.init(x: 0.05, y: 0.05, z: 0.05)
     self.addChild(stepper)
     
-    let slider = RUISlider(
+    let heightSlider = RUISlider(
         slider: SliderComponent(startingValue: 0.2, isContinuous: true)
     ) { (slider, _) in
         self.heightOffset = Double(slider.value * 10)
     }
-    slider.scale = SIMD3.init(x: 0.02, y: 0.02, z: 0.02)
-    slider.position = SIMD3.init(x: 0.1, y: 0.1, z: 0.0)
-    slider.orientation = simd_quatf(angle: .pi / 2.0, axis: [0,0,1])
-    self.addChild(slider)
+    heightSlider.scale = SIMD3.init(x: 0.02, y: 0.02, z: 0.02)
+    heightSlider.position = SIMD3.init(x: 0.1, y: 0.1, z: 0.0)
+    heightSlider.orientation = simd_quatf(angle: .pi / 2.0, axis: [0,0,1])
+    self.addChild(heightSlider)
+    
+    let albumScroll = RUISlider(
+        slider: SliderComponent(startingValue: 0.0, isContinuous: false)
+    ) { (albumScroll, _) in
+        self.albumPositionScrollStart = Int(albumScroll.value * Float(self.allPhotos!.count - self.numRows))
+        print("scroll offset: \(self.albumPositionScrollStart)")
+        DispatchQueue.main.async {
+            self.updateAssets()
+        }
+    }
+    albumScroll.scale = SIMD3.init(x: 0.02, y: 0.02, z: 0.02)
+    albumScroll.position = SIMD3.init(x: 0.2, y: 0.1, z: 0.0)
+    albumScroll.orientation = simd_quatf(angle: .pi / 2.0, axis: [0,0,1])
+    self.addChild(albumScroll)
         
   }
     
@@ -71,6 +88,14 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         }
     }
     
+    func updateAssets() {
+        for index in 0...self.numPhotos {
+            let photo = self.photos[index]
+            photo.index = index
+            photo.asset = self.allPhotos!.object(at: index + self.albumPositionScrollStart)
+        }
+    }
+    
     private func getPhotosAndVideos(){
 
         let fetchOptions = PHFetchOptions()
@@ -82,14 +107,12 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         
         for index in 0...self.numPhotos {
             let newPhoto = Photo(globe: self)
-            newPhoto.index = index
-            newPhoto.asset = self.allPhotos?.object(at: index)
             self.photos.append(newPhoto)
             self.addChild(newPhoto.base!)
         }
-            
+        self.updateAssets()
         self.updateCarousel()
-        }
+    }
 
         
     var defaultCarouselRadius = 9.0
