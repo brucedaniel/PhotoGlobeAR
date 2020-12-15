@@ -22,6 +22,8 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
         self.enableRealityUIGestures([.all])
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal,.vertical]
+        config.detectionImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: Bundle.main)
+        
         self.session.run(config, options: [])
 
         self.addCoaching()
@@ -39,6 +41,12 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
   
     }
     
+    
+    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+        guard let imageAnchor = anchors.first as? ARImageAnchor else { return }
+        let referenceImage = imageAnchor.referenceImage
+        print("found: \(referenceImage.name)")
+    }
   var canTap = true
   var globe: PhotoGlobe? = nil
 
