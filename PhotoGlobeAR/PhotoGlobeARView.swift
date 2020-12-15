@@ -1,6 +1,7 @@
 import RealityKit
 import ARKit
 import Combine
+import Photos
 
 class PhotoGlobeARView: ARView, ARSessionDelegate {
   let coachingOverlay = ARCoachingOverlayView()
@@ -26,6 +27,12 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
         self.addCoaching()
         self.session.delegate = self
         //self.debugOptions.insert([.showSceneUnderstanding, .showWorldOrigin, .showAnchorOrigins])
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+
+        if (status != PHAuthorizationStatus.authorized) {
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in })
+        }
     }
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
