@@ -107,7 +107,7 @@ class PhotoGlobe: Entity, HasAnchoring, HasCollision {
         self.allPhotos = PHAsset.fetchAssets(with: fetchOptions)
                 
         for _ in 0...self.numPhotos-1 {
-            let newPhoto = Photo(globe: self)
+            let newPhoto = Photo()
             self.photos.append(newPhoto)
             self.addChild(newPhoto.base!)
         }

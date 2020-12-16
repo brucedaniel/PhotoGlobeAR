@@ -113,7 +113,6 @@ class Photo {
     var textFront : ModelEntity?
     var base : ModelEntity?
     var imageMaterial : SimpleMaterial?
-    let globe :PhotoGlobe
     var button : RUIButton?
     var stepper : RUIStepper?
     var slider : RUISlider?
@@ -121,8 +120,7 @@ class Photo {
     var index = -1
     var defaultCardSize = 1.0
     
-    init(globe:PhotoGlobe) {
-        self.globe = globe
+    init() {
         formatter.dateFormat = "MMM dd"
         self.imageMaterial = SimpleMaterial()
             
