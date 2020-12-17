@@ -2,6 +2,7 @@ import RealityKit
 import ARKit
 import Combine
 import Photos
+import Firebase
 
 class PhotoGlobeARView: ARView, ARSessionDelegate {
     let coachingOverlay = ARCoachingOverlayView()

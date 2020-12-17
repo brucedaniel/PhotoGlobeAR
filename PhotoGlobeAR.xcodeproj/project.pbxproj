@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE96736506D76E39A2BF6FAA /* libPods-PhotoGlobeAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0372536E6836332E9F788A /* libPods-PhotoGlobeAR.a */; };
+		B368173C258AEA7100186182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B368173B258AEA7100186182 /* GoogleService-Info.plist */; };
 		B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C068A2583F9D0004D3D40 /* Photo.swift */; };
 		F8191A43258165490067C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A42258165490067C2B1 /* AppDelegate.swift */; };
 		F8191A45258165490067C2B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A44258165490067C2B1 /* ViewController.swift */; };
@@ -20,7 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6830C3421F9023865E2443C4 /* Pods-PhotoGlobeAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGlobeAR.debug.xcconfig"; path = "Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR.debug.xcconfig"; sourceTree = "<group>"; };
+		79DC811E8A7B210638841D7B /* Pods-PhotoGlobeAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGlobeAR.release.xcconfig"; path = "Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR.release.xcconfig"; sourceTree = "<group>"; };
+		B368173B258AEA7100186182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B37C068A2583F9D0004D3D40 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		DC0372536E6836332E9F788A /* libPods-PhotoGlobeAR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoGlobeAR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8191A3F258165490067C2B1 /* PhotoGlobeAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGlobeAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8191A42258165490067C2B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8191A44258165490067C2B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,17 +45,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8191A6B258166890067C2B1 /* RealityUI in Frameworks */,
+				AE96736506D76E39A2BF6FAA /* libPods-PhotoGlobeAR.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92EBF48A62C4FF89CDC79E95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6830C3421F9023865E2443C4 /* Pods-PhotoGlobeAR.debug.xcconfig */,
+				79DC811E8A7B210638841D7B /* Pods-PhotoGlobeAR.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ED11F8D59C3980FE5716EF53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC0372536E6836332E9F788A /* libPods-PhotoGlobeAR.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F8191A36258165490067C2B1 = {
 			isa = PBXGroup;
 			children = (
 				F8191A41258165490067C2B1 /* PhotoGlobeAR */,
 				F8191A40258165490067C2B1 /* Products */,
+				92EBF48A62C4FF89CDC79E95 /* Pods */,
+				ED11F8D59C3980FE5716EF53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +90,7 @@
 		F8191A41258165490067C2B1 /* PhotoGlobeAR */ = {
 			isa = PBXGroup;
 			children = (
+				B368173B258AEA7100186182 /* GoogleService-Info.plist */,
 				F8191A57258166170067C2B1 /* PhotoGlobe.swift */,
 				F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */,
 				F8191A42258165490067C2B1 /* AppDelegate.swift */,
@@ -85,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8191A532581654A0067C2B1 /* Build configuration list for PBXNativeTarget "PhotoGlobeAR" */;
 			buildPhases = (
+				6604919522BD37EB6874B542 /* [CP] Check Pods Manifest.lock */,
 				F8191A3B258165490067C2B1 /* Sources */,
 				F8191A3C258165490067C2B1 /* Frameworks */,
 				F8191A3D258165490067C2B1 /* Resources */,
+				8BAAA2C3B4CA1265D83C4A66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,12 +171,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8191A4F2581654A0067C2B1 /* LaunchScreen.storyboard in Resources */,
+				B368173C258AEA7100186182 /* GoogleService-Info.plist in Resources */,
 				F8191A4C2581654A0067C2B1 /* Assets.xcassets in Resources */,
 				F8191A4A258165490067C2B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6604919522BD37EB6874B542 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoGlobeAR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BAAA2C3B4CA1265D83C4A66 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F8191A3B258165490067C2B1 /* Sources */ = {
@@ -303,6 +375,7 @@
 		};
 		F8191A542581654A0067C2B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6830C3421F9023865E2443C4 /* Pods-PhotoGlobeAR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -323,6 +396,7 @@
 		};
 		F8191A552581654A0067C2B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79DC811E8A7B210638841D7B /* Pods-PhotoGlobeAR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>141485712413-dsnlpqd704t8p6l5tqaqc2vaer4egv6r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.141485712413-dsnlpqd704t8p6l5tqaqc2vaer4egv6r</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAXVQHTHJpQJrcVgFat55ltQO_clqVbshI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>141485712413</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>us.wildedaniel.photoglobe</string>
+	<key>PROJECT_ID</key>
+	<string>photoglobear-fb387</string>
+	<key>STORAGE_BUCKET</key>
+	<string>photoglobear-fb387.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:141485712413:ios:fd6f97b543827ca4ab92f4</string>
+</dict>
+</plist>
