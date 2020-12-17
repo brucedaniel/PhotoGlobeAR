@@ -10,11 +10,69 @@ import RealityKit
 import UIKit
 import Photos
 import RealityUI
+import Firebase
 
 class Photo {
     let frontDepth = Float(0.01)
     let formatter = DateFormatter()
     
+    
+    var storage : StorageReference? {
+        didSet(newStorage) {
+            storage?.getMetadata(completion: { [self]metadata,error in
+                var success = formatter.string(from: (metadata?.timeCreated)!)
+                if let message = metadata?.customMetadata?["message"] {
+                    success = message
+                }
+                
+                
+                
+                if let _ = self.text {
+                    self.base?.removeChild(self.text!)
+                }
+                
+                if let _ = self.textFront {
+                    self.base?.removeChild(self.textFront!)
+                }
+                
+                self.text = ModelEntity(
+                    mesh: .generateText(success,
+                                      extrusionDepth: 0.05,
+                                      font: UIFont(name: "Futura-Medium", size: CGFloat(self.defaultCardSize * 0.15))!,
+                                                containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
+                                           alignment: .left,
+                                       lineBreakMode: .byCharWrapping),
+                    materials: [SimpleMaterial(color: UIColor(hex: "#bc658dff")!, isMetallic: false)]
+                )
+
+                self.text?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
+                self.text?.setPosition(SIMD3.init(Float(-0.5 * defaultCardSize), Float(-1.5 * defaultCardSize), -0.0), relativeTo: text)
+                
+                self.textFront = ModelEntity(
+                    mesh: .generateText(success,
+                                      extrusionDepth: frontDepth,
+                                      font: UIFont(name: "Futura-Medium", size: CGFloat(self.defaultCardSize * 0.15))!,
+                                                containerFrame: CGRect(x: Double(0.1 * defaultCardSize), y: Double(-0.01 * defaultCardSize), width: Double(2.0 * defaultCardSize), height: Double(0.5 * defaultCardSize)),
+                                           alignment: .left,
+                                       lineBreakMode: .byCharWrapping),
+                    materials: [SimpleMaterial(color: UIColor(hex: "#82c4c3ff")!, isMetallic: false)]
+                )
+
+                self.textFront?.orientation = simd_quatf(angle: .pi / -2.0, axis: [1.0,0,0])
+                self.textFront?.setPosition(SIMD3.init(0, 0, frontDepth * 3), relativeTo: text)
+                
+                self.base?.addChild(text!)
+                self.base?.addChild(textFront!)
+                
+                let filename = self.getDocumentsDirectory().appendingPathComponent("PhotoGlobe_thumb_\(metadata!.md5Hash!).png")
+                
+                if FileManager.default.fileExists(atPath: filename.path){
+                    self.url = filename
+                }
+                
+            })
+        }
+    }
     
     var asset : PHAsset? {
         didSet(newAsset) {
@@ -123,6 +181,7 @@ class Photo {
     init() {
         formatter.dateFormat = "MMM dd"
         self.imageMaterial = SimpleMaterial()
+        self.imageMaterial?.baseColor = MaterialColorParameter.color(UIColor.clear)
             
         base = ModelEntity(mesh: MeshResource.generatePlane(width: Float(0.8 * defaultCardSize), depth: Float(0.8 * defaultCardSize)), materials: [self.imageMaterial!])
         

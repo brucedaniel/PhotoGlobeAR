@@ -7,6 +7,7 @@
 
 import UIKit
 import RealityKit
+import Firebase
 
 class ViewController: UIViewController {
     

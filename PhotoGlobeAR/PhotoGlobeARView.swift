@@ -2,57 +2,49 @@ import RealityKit
 import ARKit
 import Combine
 import Photos
+import Firebase
+import CryptoKit
 
 class PhotoGlobeARView: ARView, ARSessionDelegate {
     let coachingOverlay = ARCoachingOverlayView()
-    var detectionReferances = Dictionary<ARReferenceImage,PHAsset>()
+    var detectionReferances = Dictionary<ARReferenceImage,StorageReference>()
     
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         
-        let status = PHPhotoLibrary.authorizationStatus()
-
-        if (status != PHAuthorizationStatus.authorized) {
-            PHPhotoLibrary.requestAuthorization({ (newStatus) in })
-        } else {
-            
-            let fetchOptions = PHFetchOptions()
-            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",ascending: false)]
-            fetchOptions.predicate = NSPredicate(format: "mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
-            let photos = PHAsset.fetchAssets(with: fetchOptions)
-                  
+        
+        
+        Storage.storage(url:"gs://photoglobear-fb387.appspot.com").reference(withPath: "mySessionString").listAll(completion: { [self]result,error in
             let dispatch = DispatchGroup()
-            
-            for index in 0...20 {
+            for item in result.items {
                 dispatch.enter()
-                let asset = photos.object(at: index)
-                let manager = PHImageManager.default()
-                    let option = PHImageRequestOptions()
-                option.isSynchronous = true
-         
-                manager.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-                    if let result = result {
-                        //print("width: \(asset.pixelWidth)")
-                        self.detectionReferances[ARReferenceImage(result.cgImage!, orientation: .up, physicalWidth: 0.3)] = asset
-                        //print("ADDED DETECTION IMAGE")
-                    }
+                item.getData(maxSize: .max, completion: {data,error in
+                    
+                    self.detectionReferances[ARReferenceImage(UIImage(data: data!)!.cgImage!, orientation: .up, physicalWidth: 0.3)] = item
+                    
+//                    let filename = self.getDocumentsDirectory().appendingPathComponent("PhotoGlobe_thumb_\(data!.md5).png")
+//                    if !FileManager.default.fileExists(atPath: filename.absoluteString) {
+//                        try! data!.write(to: filename)
+//                    }
+                    
                     dispatch.leave()
                 })
-                
-                
             }
             
             dispatch.notify(queue: .main) {
                 self.setup()
             }
-        }
-        
-        
+        })
     }
     
     @objc required dynamic init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
         self.setup()
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
     
     private func setup() {
@@ -65,7 +57,7 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
         
         self.session.run(config, options: [])
 
-        self.addCoaching()
+        //self.addCoaching()
         self.session.delegate = self
         //self.debugOptions.insert([.showSceneUnderstanding, .showWorldOrigin, .showAnchorOrigins])
         
@@ -87,9 +79,10 @@ class PhotoGlobeARView: ARView, ARSessionDelegate {
             photo.defaultCardSize = 0.25
             let newAnchor = AnchorEntity(anchor: imageAnchor)
             newAnchor.addChild(photo.base!)
-            photo.asset = self.detectionReferances[imageAnchor.referenceImage]
-            
+            //photo.asset = self.detectionReferances[imageAnchor.referenceImage]
+            photo.storage = self.detectionReferances[imageAnchor.referenceImage]
             self.scene.addAnchor(newAnchor)
+            
             
         }
         
@@ -172,4 +165,11 @@ extension UIImage.Orientation {
 
 
 class Ping: Entity, HasAnchoring, HasCollision {
+}
+
+extension Data {
+    var md5 : String {
+        let computed = Insecure.MD5.hash(data: self)
+        return computed.map { String(format: "%02hhx", $0) }.joined()
+    }
 }
