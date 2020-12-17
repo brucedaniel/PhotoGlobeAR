@@ -86,15 +86,15 @@
                                 <rect key="frame" x="0.0" y="458" width="414" height="355"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HideImageCell" id="iEh-z9-aET">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HideImageCell" id="iEh-z9-aET">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iEh-z9-aET" id="FWV-HE-O68">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y36-ag-WC2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -128,11 +128,82 @@
                     <tabBarItem key="tabBarItem" title="Hide" id="JIf-IB-c6z"/>
                     <connections>
                         <outlet property="table" destination="OWq-jA-uph" id="h11-10-vpu"/>
+                        <segue destination="fVG-yT-7eJ" kind="show" identifier="hideDetailSegue" id="WZD-eD-5Ph"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jr8-27-URE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="768" y="708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QJY-Ca-P9Z">
+            <objects>
+                <navigationController id="i3H-ff-iwA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dO7-PZ-Mdc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vlo-mx-mYg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fVG-yT-7eJ" kind="relationship" relationship="rootViewController" id="hHa-iU-Luv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59N-cl-1m6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1794" y="686"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="eTn-EV-ERv">
+            <objects>
+                <viewController id="fVG-yT-7eJ" customClass="HideDetailsVC" customModule="PhotoGlobeAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mue-Av-VfR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hJo-tF-oFs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jfX-ON-BIg">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="688"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8bw-i1-G42">
+                                        <rect key="frame" x="0.0" y="688" width="414" height="90"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="doneEditingMessage" destination="fVG-yT-7eJ" eventType="editingDidEnd" id="Z2p-Y8-Yra"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klp-7q-RrE">
+                                        <rect key="frame" x="0.0" y="778" width="414" height="30"/>
+                                        <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="delete" destination="fVG-yT-7eJ" eventType="touchDragInside" id="7c1-b2-bBe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OAE-hD-XkQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hJo-tF-oFs" firstAttribute="top" secondItem="OAE-hD-XkQ" secondAttribute="top" id="IPM-Xl-0h1"/>
+                            <constraint firstItem="OAE-hD-XkQ" firstAttribute="bottom" secondItem="hJo-tF-oFs" secondAttribute="bottom" id="KwN-uf-H7j"/>
+                            <constraint firstItem="hJo-tF-oFs" firstAttribute="leading" secondItem="OAE-hD-XkQ" secondAttribute="leading" id="jps-j6-KUN"/>
+                            <constraint firstItem="OAE-hD-XkQ" firstAttribute="trailing" secondItem="hJo-tF-oFs" secondAttribute="trailing" id="kch-1t-kob"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="WgB-S5-xgl">
+                        <barButtonItem key="backBarButtonItem" title="Done" id="oDv-ek-kww"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="jfX-ON-BIg" id="ni2-55-lsz"/>
+                        <outlet property="textField" destination="8bw-i1-G42" id="fEg-vb-b5h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6qx-EF-d1I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2659" y="805"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6g9-Y1-8uK">
@@ -155,12 +226,12 @@
         <!--Camera View Controller-->
         <scene sceneID="tyS-tF-z2J">
             <objects>
-                <viewController id="iYy-Q6-b0m" userLabel="Camera View Controller" customClass="CameraViewController" customModule="AVCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iYy-Q6-b0m" userLabel="Camera View Controller" customClass="CameraViewController" customModule="PhotoGlobeAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fET-zS-K9Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEC-GR-FlI" userLabel="Preview" customClass="PreviewView" customModule="AVCam" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEC-GR-FlI" userLabel="Preview" customClass="PreviewView" customModule="PhotoGlobeAR" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -169,7 +240,7 @@
                                 </connections>
                             </view>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sjr-M9-Q1I" userLabel="Capture Mode">
-                                <rect key="frame" x="206" y="185" width="88" height="45"/>
+                                <rect key="frame" x="163" y="246" width="88" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="KvM-IN-DY1"/>
                                     <constraint firstAttribute="width" secondItem="sjr-M9-Q1I" secondAttribute="height" multiplier="80:40" id="Mks-BE-Ye3"/>
@@ -183,7 +254,7 @@
                                 </connections>
                             </segmentedControl>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjV-IU-1OH" userLabel="Capturing Live Photo">
-                                <rect key="frame" x="191.5" y="84" width="31" height="20.5"/>
+                                <rect key="frame" x="191.5" y="164" width="31" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -216,7 +287,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSe-dx-mf0" userLabel="Record">
-                                <rect key="frame" x="314" y="334" width="60" height="60"/>
+                                <rect key="frame" x="30" y="314" width="60" height="60"/>
                                 <state key="normal" image="CaptureVideo">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -230,7 +301,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-yX-5oW" userLabel="Photo">
-                                <rect key="frame" x="312" y="178.5" width="62" height="60"/>
+                                <rect key="frame" x="175" y="315.5" width="62" height="60"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="Ddu-f4-ByG"/>
@@ -249,7 +320,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUX-zt-kaT" userLabel="Camera">
-                                <rect key="frame" x="314" y="64" width="60" height="60"/>
+                                <rect key="frame" x="324" y="314" width="60" height="60"/>
                                 <state key="normal" image="FlipCamera">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -263,7 +334,7 @@
                                 </connections>
                             </button>
                             <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="KGI-ot-jVN">
-                                <rect key="frame" x="92" y="54" width="230" height="26"/>
+                                <rect key="frame" x="92" y="124" width="230" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="qHM-lq-JYP"/>
                                 </constraints>
@@ -277,7 +348,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIH-Oc-YH5" userLabel="SSM">
-                                <rect key="frame" x="20" y="52" width="50" height="50"/>
+                                <rect key="frame" x="334" y="59" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1JG-kO-9ep"/>
                                     <constraint firstAttribute="width" constant="50" id="NvQ-Ue-2ll"/>
@@ -288,7 +359,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWb-VX-ZDg" userLabel="Portrait Effects Matte Delivery">
-                                <rect key="frame" x="20" y="144" width="50" height="50"/>
+                                <rect key="frame" x="232" y="64" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fQo-hQ-Wfm"/>
                                     <constraint firstAttribute="width" constant="50" id="ta9-uj-KOp"/>
@@ -304,7 +375,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqT-oY-jdW" userLabel="Depth Data Delivery">
-                                <rect key="frame" x="20" y="220" width="50" height="50"/>
+                                <rect key="frame" x="132" y="64" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Jcm-rC-o13"/>
                                     <constraint firstAttribute="width" constant="50" id="n2S-vE-HkW"/>
@@ -320,7 +391,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32f-5l-cQt" userLabel="Live Photo Mode">
-                                <rect key="frame" x="20" y="334" width="50" height="50"/>
+                                <rect key="frame" x="30" y="64" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="8Xa-mk-eSX"/>
                                     <constraint firstAttribute="height" constant="50" id="aTO-xC-nla"/>
@@ -414,85 +485,85 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Vy1-yB-HJc"/>
-                                <exclude reference="s4z-4u-7ik"/>
-                                <exclude reference="ezu-Br-Vgw"/>
                                 <exclude reference="JfR-hO-ClE"/>
+                                <exclude reference="Vy1-yB-HJc"/>
+                                <exclude reference="ezu-Br-Vgw"/>
                                 <exclude reference="p5h-8F-Bk8"/>
-                                <exclude reference="tfb-73-jNU"/>
-                                <exclude reference="vmQ-zB-Mpt"/>
-                                <exclude reference="nPe-pF-JWN"/>
+                                <exclude reference="s4z-4u-7ik"/>
                                 <exclude reference="DLD-L8-qp7"/>
                                 <exclude reference="gZ8-jf-vU5"/>
+                                <exclude reference="nPe-pF-JWN"/>
                                 <exclude reference="oOp-Fn-HaU"/>
-                                <exclude reference="MF5-YM-UiQ"/>
-                                <exclude reference="P9F-JI-BLb"/>
+                                <exclude reference="tfb-73-jNU"/>
+                                <exclude reference="vmQ-zB-Mpt"/>
                                 <exclude reference="2sz-GK-Zhc"/>
+                                <exclude reference="MF5-YM-UiQ"/>
                                 <exclude reference="N8H-tw-agN"/>
-                                <exclude reference="mOA-P4-V9c"/>
+                                <exclude reference="P9F-JI-BLb"/>
                                 <exclude reference="VUr-ai-GB8"/>
+                                <exclude reference="mOA-P4-V9c"/>
                                 <exclude reference="uQ1-vg-YWL"/>
                                 <exclude reference="xGd-vy-nIK"/>
+                                <exclude reference="Qng-jI-NDb"/>
                                 <exclude reference="fjp-65-amY"/>
                                 <exclude reference="hb8-Ki-vwD"/>
-                                <exclude reference="xso-ak-g2v"/>
-                                <exclude reference="Qng-jI-NDb"/>
                                 <exclude reference="ldW-0H-KdS"/>
-                                <exclude reference="sR6-CD-M7f"/>
                                 <exclude reference="KYP-mE-pde"/>
+                                <exclude reference="sR6-CD-M7f"/>
+                                <exclude reference="xso-ak-g2v"/>
                                 <exclude reference="HQ8-GU-oie"/>
-                                <exclude reference="Qe4-t2-U5Y"/>
                                 <exclude reference="KfA-VP-3gs"/>
+                                <exclude reference="Qe4-t2-U5Y"/>
                                 <exclude reference="gnE-hp-ecc"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <exclude reference="UFS-VN-qEm"/>
-                                <include reference="s4z-4u-7ik"/>
-                                <include reference="ezu-Br-Vgw"/>
                                 <exclude reference="Llc-Xj-2G3"/>
-                                <exclude reference="uNk-5E-bkt"/>
+                                <exclude reference="UFS-VN-qEm"/>
+                                <include reference="ezu-Br-Vgw"/>
                                 <include reference="p5h-8F-Bk8"/>
-                                <exclude reference="MmE-BH-PiE"/>
+                                <include reference="s4z-4u-7ik"/>
+                                <exclude reference="uNk-5E-bkt"/>
+                                <include reference="wqi-jv-ilV"/>
                                 <include reference="MF5-YM-UiQ"/>
+                                <exclude reference="MmE-BH-PiE"/>
                                 <exclude reference="VUr-ai-GB8"/>
                                 <exclude reference="xGd-vy-nIK"/>
-                                <exclude reference="dij-ei-AyG"/>
-                                <exclude reference="Moi-9u-6ui"/>
-                                <include reference="fjp-65-amY"/>
-                                <include reference="hb8-Ki-vwD"/>
-                                <exclude reference="aw6-YA-xHu"/>
-                                <exclude reference="7Mt-x0-KEf"/>
-                                <include reference="xso-ak-g2v"/>
-                                <include reference="wqi-jv-ilV"/>
                                 <include reference="Qng-jI-NDb"/>
                                 <exclude reference="XVF-1z-y57"/>
+                                <exclude reference="Moi-9u-6ui"/>
+                                <exclude reference="aw6-YA-xHu"/>
+                                <exclude reference="dij-ei-AyG"/>
+                                <include reference="fjp-65-amY"/>
+                                <include reference="hb8-Ki-vwD"/>
                                 <exclude reference="k89-qQ-TDT"/>
                                 <include reference="ldW-0H-KdS"/>
-                                <include reference="sR6-CD-M7f"/>
                                 <include reference="KYP-mE-pde"/>
-                                <include reference="HQ8-GU-oie"/>
+                                <include reference="sR6-CD-M7f"/>
+                                <exclude reference="7Mt-x0-KEf"/>
+                                <include reference="xso-ak-g2v"/>
                                 <exclude reference="2n9-AF-IKx"/>
-                                <include reference="Qe4-t2-U5Y"/>
-                                <include reference="KfA-VP-3gs"/>
+                                <include reference="HQ8-GU-oie"/>
                                 <exclude reference="K2Z-Jz-wE2"/>
-                                <exclude reference="guu-Iq-rXg"/>
+                                <include reference="KfA-VP-3gs"/>
+                                <include reference="Qe4-t2-U5Y"/>
                                 <include reference="gnE-hp-ecc"/>
+                                <exclude reference="guu-Iq-rXg"/>
                                 <exclude reference="GTK-VY-ZCZ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="tfb-73-jNU"/>
                                 <include reference="DLD-L8-qp7"/>
+                                <include reference="tfb-73-jNU"/>
                                 <include reference="N8H-tw-agN"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="vmQ-zB-Mpt"/>
                                 <include reference="nPe-pF-JWN"/>
+                                <include reference="vmQ-zB-Mpt"/>
                                 <include reference="2sz-GK-Zhc"/>
                                 <include reference="mOA-P4-V9c"/>
                             </mask>
@@ -540,8 +611,11 @@
             <point key="canvasLocation" x="867" y="185"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WZD-eD-5Ph"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="CapturePhoto" width="150" height="150"/>
+        <image name="CapturePhoto" width="128" height="128"/>
         <image name="CaptureVideo" width="150" height="150"/>
         <image name="DepthON" width="150" height="150"/>
         <image name="FlipCamera" width="150" height="150"/>

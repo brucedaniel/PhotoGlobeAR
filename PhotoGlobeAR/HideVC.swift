@@ -21,12 +21,23 @@ class HideVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         let imgView = cell.viewWithTag(3) as! UIImageView
         imgView.image = nil
         self.items[indexPath.row].downloadURL(completion: {url,error in
-            print(url)
             imgView.kf.setImage(with: url)
         })
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "hideDetailSegue", sender: self.items[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let details = segue.destination as? HideDetailsVC {
+            let path = self.table.indexPathForSelectedRow!.row
+            let item = self.items[path]
+            details.storage = item
+            self.table.deselectRow(at: self.table.indexPathForSelectedRow!, animated: false)
+        }
+    }
     
     @IBOutlet var cameraFrame : UIView!
     @IBOutlet var table : UITableView!

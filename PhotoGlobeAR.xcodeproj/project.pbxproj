@@ -14,6 +14,7 @@
 		B35533FD258AFC3A0059C993 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533FC258AFC3A0059C993 /* PreviewView.swift */; };
 		B3553400258AFC590059C993 /* ItemSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533FF258AFC590059C993 /* ItemSelectionViewController.swift */; };
 		B3553404258B0C860059C993 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B3553403258B0C860059C993 /* Kingfisher */; };
+		B3553407258B147F0059C993 /* HideDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3553406258B147F0059C993 /* HideDetailVC.swift */; };
 		B368173C258AEA7100186182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B368173B258AEA7100186182 /* GoogleService-Info.plist */; };
 		B368173F258AECC200186182 /* HideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368173E258AECC200186182 /* HideVC.swift */; };
 		B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C068A2583F9D0004D3D40 /* Photo.swift */; };
@@ -37,6 +38,7 @@
 		B35533F9258AFBF20059C993 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		B35533FC258AFC3A0059C993 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		B35533FF258AFC590059C993 /* ItemSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewController.swift; sourceTree = "<group>"; };
+		B3553406258B147F0059C993 /* HideDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideDetailVC.swift; sourceTree = "<group>"; };
 		B368173B258AEA7100186182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B368173E258AECC200186182 /* HideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideVC.swift; sourceTree = "<group>"; };
 		B37C068A2583F9D0004D3D40 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				B35533FF258AFC590059C993 /* ItemSelectionViewController.swift */,
 				B35533FC258AFC3A0059C993 /* PreviewView.swift */,
 				B368173E258AECC200186182 /* HideVC.swift */,
+				B3553406258B147F0059C993 /* HideDetailVC.swift */,
 			);
 			path = PhotoGlobeAR;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				F8191A5F258166170067C2B1 /* PhotoGlobe.swift in Sources */,
 				F8191A43258165490067C2B1 /* AppDelegate.swift in Sources */,
 				B35533FD258AFC3A0059C993 /* PreviewView.swift in Sources */,
+				B3553407258B147F0059C993 /* HideDetailVC.swift in Sources */,
 				F8191A66258166170067C2B1 /* PhotoGlobeARView.swift in Sources */,
 				B35533F7258AF80E0059C993 /* PhotoCaptureDelegate.swift in Sources */,
 				F8191A47258165490067C2B1 /* Experience.rcproject in Sources */,
