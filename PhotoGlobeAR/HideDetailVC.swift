@@ -24,8 +24,12 @@ class HideDetailsVC : UIViewController {
     }
     
     @IBAction func doneEditingMessage() {
-        storage?.updateMetadata(StorageMetadata(dictionary: ["message":"\(textField!.text!)"])!, completion: {_,_ in 
-            
+     
+        
+        let metadata = StorageMetadata()
+        metadata.customMetadata = ["message":"\(self.textField!.text!)"]
+        storage?.updateMetadata(metadata, completion: {data,error in
+//            print("\(data)\(error)")
         })
     }
     
@@ -33,6 +37,12 @@ class HideDetailsVC : UIViewController {
         super.viewWillAppear(animated)
         storage!.downloadURL(completion: { [self]url,error in
             imageView!.kf.setImage(with: url)
+        })
+        self.textField?.text = ""
+        storage?.getMetadata(completion: {data,error in
+            if let message = data?.customMetadata?["message"] {
+                self.textField?.text = message
+            }
         })
     }
     
