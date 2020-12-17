@@ -92,6 +92,17 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iEh-z9-aET" id="FWV-HE-O68">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y36-ag-WC2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Y36-ag-WC2" secondAttribute="bottom" id="3gh-hv-80Q"/>
+                                                <constraint firstItem="Y36-ag-WC2" firstAttribute="top" secondItem="FWV-HE-O68" secondAttribute="top" id="Wqf-Gh-LfL"/>
+                                                <constraint firstItem="Y36-ag-WC2" firstAttribute="leading" secondItem="FWV-HE-O68" secondAttribute="leading" id="XIw-p4-dBb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y36-ag-WC2" secondAttribute="trailing" id="zS3-xt-a2e"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>

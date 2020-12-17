@@ -201,7 +201,10 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             return
         }
         let stashRef = self.storage?.child("\(photoData.hashValue).png")
-        let task = stashRef?.putData(photoData)
+        let task = stashRef?.putData(photoData, metadata: nil, completion: {_,_ in
+            NotificationCenter.default.post(Notification(name: Notification.Name("uploadedHide")))
+        })
+        
         task?.enqueue()
         
     }

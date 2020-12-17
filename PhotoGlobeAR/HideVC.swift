@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import Kingfisher
 
 class HideVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -16,11 +17,12 @@ class HideVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HideImageCell")!
-        cell.textLabel?.text = ")"
-        cell.imageView?.image = nil
-        
+
+        let imgView = cell.viewWithTag(3) as! UIImageView
+        imgView.image = nil
         self.items[indexPath.row].downloadURL(completion: {url,error in
-            cell.textLabel?.text = "index: \(url?.absoluteString)"
+            print(url)
+            imgView.kf.setImage(with: url)
         })
         return cell
     }
@@ -31,11 +33,20 @@ class HideVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     var items = [StorageReference]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name("uploadedHide"), object: nil)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.update()
+    }
+    
+    @objc func update() {
         Storage.storage(url:"gs://photoglobear-fb387.appspot.com").reference(withPath: "mySessionString").listAll(completion: { [self]result,error in
             items.removeAll()
             items.append(contentsOf: result.items)
             self.table.reloadData()
         })
-
     }
 }

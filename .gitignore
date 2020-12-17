@@ -8,3 +8,5 @@ PhotoGlobeAR.xcodeproj/project.xcworkspace/xcuserdata/r00t.xcuserdatad/
 PhotoGlobeAR.xcodeproj/xcuserdata/r00t.xcuserdatad/xcdebugger/
 
 Pods/
+
+*.xcuserstate

@@ -13,6 +13,7 @@
 		B35533FA258AFBF20059C993 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533F9258AFBF20059C993 /* CameraViewController.swift */; };
 		B35533FD258AFC3A0059C993 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533FC258AFC3A0059C993 /* PreviewView.swift */; };
 		B3553400258AFC590059C993 /* ItemSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533FF258AFC590059C993 /* ItemSelectionViewController.swift */; };
+		B3553404258B0C860059C993 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B3553403258B0C860059C993 /* Kingfisher */; };
 		B368173C258AEA7100186182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B368173B258AEA7100186182 /* GoogleService-Info.plist */; };
 		B368173F258AECC200186182 /* HideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368173E258AECC200186182 /* HideVC.swift */; };
 		B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C068A2583F9D0004D3D40 /* Photo.swift */; };
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3553404258B0C860059C993 /* Kingfisher in Frameworks */,
 				F8191A6B258166890067C2B1 /* RealityUI in Frameworks */,
 				AE96736506D76E39A2BF6FAA /* libPods-PhotoGlobeAR.a in Frameworks */,
 			);
@@ -146,6 +148,7 @@
 			name = PhotoGlobeAR;
 			packageProductDependencies = (
 				F8191A6A258166890067C2B1 /* RealityUI */,
+				B3553403258B0C860059C993 /* Kingfisher */,
 			);
 			productName = PhotoGlobeAR;
 			productReference = F8191A3F258165490067C2B1 /* PhotoGlobeAR.app */;
@@ -176,6 +179,7 @@
 			mainGroup = F8191A36258165490067C2B1;
 			packageReferences = (
 				F8191A69258166890067C2B1 /* XCRemoteSwiftPackageReference "RealityUI" */,
+				B3553402258B0C860059C993 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F8191A40258165490067C2B1 /* Products */;
 			projectDirPath = "";
@@ -467,6 +471,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B3553402258B0C860059C993 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.8;
+			};
+		};
 		F8191A69258166890067C2B1 /* XCRemoteSwiftPackageReference "RealityUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maxxfrazer/RealityUI.git";
@@ -478,6 +490,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B3553403258B0C860059C993 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3553402258B0C860059C993 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F8191A6A258166890067C2B1 /* RealityUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F8191A69258166890067C2B1 /* XCRemoteSwiftPackageReference "RealityUI" */;
