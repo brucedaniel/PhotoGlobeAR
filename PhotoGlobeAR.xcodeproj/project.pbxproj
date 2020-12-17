@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		AE96736506D76E39A2BF6FAA /* libPods-PhotoGlobeAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0372536E6836332E9F788A /* libPods-PhotoGlobeAR.a */; };
+		B35533C4258AF0D30059C993 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B35533C3258AF0D30059C993 /* README.md */; };
 		B368173C258AEA7100186182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B368173B258AEA7100186182 /* GoogleService-Info.plist */; };
+		B368173F258AECC200186182 /* HideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368173E258AECC200186182 /* HideVC.swift */; };
 		B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C068A2583F9D0004D3D40 /* Photo.swift */; };
+		B3A1D8A1258AF06900BA032A /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B3A1D8A0258AF06900BA032A /* Podfile */; };
 		F8191A43258165490067C2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A42258165490067C2B1 /* AppDelegate.swift */; };
 		F8191A45258165490067C2B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8191A44258165490067C2B1 /* ViewController.swift */; };
 		F8191A47258165490067C2B1 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = F8191A46258165490067C2B1 /* Experience.rcproject */; };
@@ -24,8 +27,11 @@
 /* Begin PBXFileReference section */
 		6830C3421F9023865E2443C4 /* Pods-PhotoGlobeAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGlobeAR.debug.xcconfig"; path = "Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR.debug.xcconfig"; sourceTree = "<group>"; };
 		79DC811E8A7B210638841D7B /* Pods-PhotoGlobeAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGlobeAR.release.xcconfig"; path = "Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR.release.xcconfig"; sourceTree = "<group>"; };
+		B35533C3258AF0D30059C993 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		B368173B258AEA7100186182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B368173E258AECC200186182 /* HideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideVC.swift; sourceTree = "<group>"; };
 		B37C068A2583F9D0004D3D40 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B3A1D8A0258AF06900BA032A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		DC0372536E6836332E9F788A /* libPods-PhotoGlobeAR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoGlobeAR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8191A3F258165490067C2B1 /* PhotoGlobeAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGlobeAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8191A42258165490067C2B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +96,9 @@
 		F8191A41258165490067C2B1 /* PhotoGlobeAR */ = {
 			isa = PBXGroup;
 			children = (
+				B35533C3258AF0D30059C993 /* README.md */,
 				B368173B258AEA7100186182 /* GoogleService-Info.plist */,
+				B3A1D8A0258AF06900BA032A /* Podfile */,
 				F8191A57258166170067C2B1 /* PhotoGlobe.swift */,
 				F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */,
 				F8191A42258165490067C2B1 /* AppDelegate.swift */,
@@ -101,6 +109,7 @@
 				F8191A4D2581654A0067C2B1 /* LaunchScreen.storyboard */,
 				F8191A502581654A0067C2B1 /* Info.plist */,
 				B37C068A2583F9D0004D3D40 /* Photo.swift */,
+				B368173E258AECC200186182 /* HideVC.swift */,
 			);
 			path = PhotoGlobeAR;
 			sourceTree = "<group>";
@@ -170,6 +179,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35533C4258AF0D30059C993 /* README.md in Resources */,
+				B3A1D8A1258AF06900BA032A /* Podfile in Resources */,
 				F8191A4F2581654A0067C2B1 /* LaunchScreen.storyboard in Resources */,
 				B368173C258AEA7100186182 /* GoogleService-Info.plist in Resources */,
 				F8191A4C2581654A0067C2B1 /* Assets.xcassets in Resources */,
@@ -226,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B368173F258AECC200186182 /* HideVC.swift in Sources */,
 				B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */,
 				F8191A45258165490067C2B1 /* ViewController.swift in Sources */,
 				F8191A5F258166170067C2B1 /* PhotoGlobe.swift in Sources */,
