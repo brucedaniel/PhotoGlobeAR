@@ -45,6 +45,7 @@ class HideVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name("uploadedHide"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.update), name: NSNotification.Name("deleteHide"), object: nil)
 
     }
     

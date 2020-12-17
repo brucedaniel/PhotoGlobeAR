@@ -16,11 +16,17 @@ class HideDetailsVC : UIViewController {
     @IBOutlet var textField:UITextField?
     
     @IBAction func delete() {
-        
+        storage?.delete(completion: {_ in
+            self.dismiss(animated: true, completion: {
+                NotificationCenter.default.post(Notification(name: Notification.Name("deleteHide")))
+            })
+        })
     }
     
     @IBAction func doneEditingMessage() {
-        
+        storage?.updateMetadata(StorageMetadata(dictionary: ["message":"\(textField!.text!)"])!, completion: {_,_ in 
+            
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
