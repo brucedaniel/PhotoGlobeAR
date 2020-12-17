@@ -11,24 +11,31 @@ import Firebase
 
 class HideVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HideImageCell")!
-        cell.textLabel?.text = "index: \(indexPath.row)"
+        cell.textLabel?.text = ")"
+        cell.imageView?.image = nil
+        
+        self.items[indexPath.row].downloadURL(completion: {url,error in
+            cell.textLabel?.text = "index: \(url?.absoluteString)"
+        })
         return cell
     }
     
-    var ref: DatabaseReference?
-    var storage : Storage?
+    
     @IBOutlet var cameraFrame : UIView!
     @IBOutlet var table : UITableView!
-    
+    var items = [StorageReference]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.storage = Storage.storage(url:"gs://photoglobear-fb387.appspot.com")
-        ref = Database.database(url: "https://photoglobear-fb387-default-rtdb.firebaseio.com/").reference()
+        Storage.storage(url:"gs://photoglobear-fb387.appspot.com").reference(withPath: "mySessionString").listAll(completion: { [self]result,error in
+            items.removeAll()
+            items.append(contentsOf: result.items)
+            self.table.reloadData()
+        })
 
     }
 }

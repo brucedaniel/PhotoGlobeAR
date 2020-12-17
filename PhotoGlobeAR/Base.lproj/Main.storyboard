@@ -65,9 +65,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92Y-3U-gUE">
                                 <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RB5-gk-J0r">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                        <connections>
+                                            <segue destination="iYy-Q6-b0m" kind="embed" id="625-zN-PRw"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="RB5-gk-J0r" firstAttribute="leading" secondItem="92Y-3U-gUE" secondAttribute="leading" id="1Wn-h4-ihf"/>
                                     <constraint firstAttribute="width" secondItem="92Y-3U-gUE" secondAttribute="height" multiplier="1:1" id="9Zo-ba-ocd"/>
+                                    <constraint firstAttribute="bottom" secondItem="RB5-gk-J0r" secondAttribute="bottom" id="LQn-nz-ECv"/>
+                                    <constraint firstAttribute="trailing" secondItem="RB5-gk-J0r" secondAttribute="trailing" id="PRe-Pa-dDr"/>
+                                    <constraint firstItem="RB5-gk-J0r" firstAttribute="top" secondItem="92Y-3U-gUE" secondAttribute="top" id="slg-CL-MJh"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OWq-jA-uph">
@@ -129,10 +141,410 @@
             </objects>
             <point key="canvasLocation" x="-201" y="923"/>
         </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="tyS-tF-z2J">
+            <objects>
+                <viewController id="iYy-Q6-b0m" userLabel="Camera View Controller" customClass="CameraViewController" customModule="AVCam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fET-zS-K9Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEC-GR-FlI" userLabel="Preview" customClass="PreviewView" customModule="AVCam" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7r3-kx-hs2" appends="YES" id="Q8O-xh-Jas"/>
+                                </connections>
+                            </view>
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sjr-M9-Q1I" userLabel="Capture Mode">
+                                <rect key="frame" x="206" y="185" width="88" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="KvM-IN-DY1"/>
+                                    <constraint firstAttribute="width" secondItem="sjr-M9-Q1I" secondAttribute="height" multiplier="80:40" id="Mks-BE-Ye3"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="" image="PhotoSelector"/>
+                                    <segment title="" image="MovieSelector"/>
+                                </segments>
+                                <connections>
+                                    <action selector="toggleCaptureMode:" destination="iYy-Q6-b0m" eventType="valueChanged" id="t6J-l2-l1E"/>
+                                </connections>
+                            </segmentedControl>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjV-IU-1OH" userLabel="Capturing Live Photo">
+                                <rect key="frame" x="191.5" y="84" width="31" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Unavailable" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51y-ma-Z9l" userLabel="Camera Unavailable">
+                                <rect key="frame" x="103.5" y="192.5" width="207" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnE-zq-gL8" userLabel="Resume">
+                                <rect key="frame" x="124.5" y="187.5" width="165" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                <state key="normal" title="Tap to resume">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resumeInterruptedSession:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="OYd-vV-bUv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSe-dx-mf0" userLabel="Record">
+                                <rect key="frame" x="314" y="334" width="60" height="60"/>
+                                <state key="normal" image="CaptureVideo">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleMovieRecording:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="5cz-l4-jhq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-yX-5oW" userLabel="Photo">
+                                <rect key="frame" x="312" y="178.5" width="62" height="60"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Ddu-f4-ByG"/>
+                                    <constraint firstAttribute="height" constant="60" id="Vin-x3-2pf"/>
+                                </constraints>
+                                <state key="normal" image="CapturePhoto" backgroundImage="person.badge.plus.fill" catalog="system">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="capturePhoto:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="YpE-zg-zVo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUX-zt-kaT" userLabel="Camera">
+                                <rect key="frame" x="314" y="64" width="60" height="60"/>
+                                <state key="normal" image="FlipCamera">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="changeCamera:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="F7i-59-Q3A"/>
+                                </connections>
+                            </button>
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="KGI-ot-jVN">
+                                <rect key="frame" x="92" y="54" width="230" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="qHM-lq-JYP"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Speed"/>
+                                    <segment title="Balanced"/>
+                                    <segment title="Quality"/>
+                                </segments>
+                                <connections>
+                                    <action selector="togglePhotoQualityPrioritizationMode:" destination="iYy-Q6-b0m" eventType="valueChanged" id="qwb-Ms-Ibp"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIH-Oc-YH5" userLabel="SSM">
+                                <rect key="frame" x="20" y="52" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1JG-kO-9ep"/>
+                                    <constraint firstAttribute="width" constant="50" id="NvQ-Ue-2ll"/>
+                                </constraints>
+                                <state key="normal" image="ssm"/>
+                                <connections>
+                                    <action selector="toggleSemanticSegmentationMatteDeliveryMode:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="Kjb-dO-TrK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWb-VX-ZDg" userLabel="Portrait Effects Matte Delivery">
+                                <rect key="frame" x="20" y="144" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fQo-hQ-Wfm"/>
+                                    <constraint firstAttribute="width" constant="50" id="ta9-uj-KOp"/>
+                                </constraints>
+                                <state key="normal" image="PortraitMatteON"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="togglePortraitEffectsMatteDeliveryMode:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="EHg-t3-Vif"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqT-oY-jdW" userLabel="Depth Data Delivery">
+                                <rect key="frame" x="20" y="220" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Jcm-rC-o13"/>
+                                    <constraint firstAttribute="width" constant="50" id="n2S-vE-HkW"/>
+                                </constraints>
+                                <state key="normal" image="DepthON"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleDepthDataDeliveryMode:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="kGk-WD-aqw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32f-5l-cQt" userLabel="Live Photo Mode">
+                                <rect key="frame" x="20" y="334" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8Xa-mk-eSX"/>
+                                    <constraint firstAttribute="height" constant="50" id="aTO-xC-nla"/>
+                                </constraints>
+                                <state key="normal" image="LivePhotoON"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleLivePhotoMode:" destination="iYy-Q6-b0m" eventType="touchUpInside" id="N2E-20-NJu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nVc-Ow-ZkX"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="top" secondItem="JUX-zt-kaT" secondAttribute="top" id="2n9-AF-IKx"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" constant="-38" id="2sz-GK-Zhc"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="width" secondItem="zSe-dx-mf0" secondAttribute="width" id="5fm-l4-A9a"/>
+                            <constraint firstItem="32f-5l-cQt" firstAttribute="leading" secondItem="nVc-Ow-ZkX" secondAttribute="leading" constant="60" id="7Mt-x0-KEf">
+                                <variation key="heightClass=compact" constant="30"/>
+                                <variation key="heightClass=regular" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="cnE-zq-gL8" firstAttribute="centerX" secondItem="nVc-Ow-ZkX" secondAttribute="centerX" id="93y-mJ-vlC"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="width" secondItem="JUX-zt-kaT" secondAttribute="width" id="AxH-tb-8MX"/>
+                            <constraint firstItem="zIH-Oc-YH5" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" constant="-130" id="DLD-L8-qp7"/>
+                            <constraint firstItem="zSe-dx-mf0" firstAttribute="leading" secondItem="nVc-Ow-ZkX" secondAttribute="leading" constant="30" id="GTK-VY-ZCZ"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="centerY" secondItem="sjr-M9-Q1I" secondAttribute="centerY" id="HQ8-GU-oie"/>
+                            <constraint firstItem="yEC-GR-FlI" firstAttribute="bottom" secondItem="fET-zS-K9Y" secondAttribute="bottom" id="Hso-Zr-SLZ"/>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="trailing" secondItem="zIH-Oc-YH5" secondAttribute="trailing" constant="30" id="JfR-hO-ClE"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="top" secondItem="sjr-M9-Q1I" secondAttribute="bottom" constant="24" id="K2Z-Jz-wE2"/>
+                            <constraint firstItem="JUX-zt-kaT" firstAttribute="top" secondItem="nVc-Ow-ZkX" secondAttribute="top" constant="30" id="KYP-mE-pde">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" id="KfA-VP-3gs"/>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="bottom" secondItem="l3J-yX-5oW" secondAttribute="bottom" constant="40" id="Llc-Xj-2G3"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="centerX" secondItem="dqT-oY-jdW" secondAttribute="centerX" id="MF5-YM-UiQ"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="top" secondItem="dqT-oY-jdW" secondAttribute="top" id="MmE-BH-PiE"/>
+                            <constraint firstItem="dqT-oY-jdW" firstAttribute="centerX" secondItem="fET-zS-K9Y" secondAttribute="centerX" constant="-50" id="Moi-9u-6ui"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" constant="-38" id="N8H-tw-agN"/>
+                            <constraint firstItem="51y-ma-Z9l" firstAttribute="centerX" secondItem="nVc-Ow-ZkX" secondAttribute="centerX" id="NJl-Pc-spi"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="centerX" secondItem="fET-zS-K9Y" secondAttribute="centerX" constant="50" id="P9F-JI-BLb"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="leading" secondItem="sjr-M9-Q1I" secondAttribute="trailing" constant="80" id="Qe4-t2-U5Y">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="WjV-IU-1OH" firstAttribute="top" secondItem="nVc-Ow-ZkX" secondAttribute="top" constant="40" id="Qng-jI-NDb"/>
+                            <constraint firstItem="51y-ma-Z9l" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" id="TKy-7Q-VDq"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="height" secondItem="JUX-zt-kaT" secondAttribute="height" id="U6e-rh-mKD"/>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="trailing" secondItem="JUX-zt-kaT" secondAttribute="trailing" constant="30" id="UFS-VN-qEm"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" id="VUr-ai-GB8"/>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="trailing" secondItem="zIH-Oc-YH5" secondAttribute="trailing" constant="30" id="Vy1-yB-HJc"/>
+                            <constraint firstItem="WjV-IU-1OH" firstAttribute="top" secondItem="dqT-oY-jdW" secondAttribute="bottom" constant="50" id="XVF-1z-y57"/>
+                            <constraint firstItem="dqT-oY-jdW" firstAttribute="top" secondItem="nVc-Ow-ZkX" secondAttribute="top" constant="20" id="aw6-YA-xHu"/>
+                            <constraint firstItem="dqT-oY-jdW" firstAttribute="top" secondItem="32f-5l-cQt" secondAttribute="top" id="dij-ei-AyG"/>
+                            <constraint firstItem="KGI-ot-jVN" firstAttribute="centerX" secondItem="nVc-Ow-ZkX" secondAttribute="centerX" id="dyz-gY-dxQ"/>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="trailing" secondItem="l3J-yX-5oW" secondAttribute="trailing" constant="40" id="ezu-Br-Vgw"/>
+                            <constraint firstItem="dqT-oY-jdW" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" constant="38" id="fjp-65-amY"/>
+                            <constraint firstItem="zIH-Oc-YH5" firstAttribute="top" secondItem="nVc-Ow-ZkX" secondAttribute="top" constant="15" id="gZ8-jf-vU5"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="centerX" secondItem="zSe-dx-mf0" secondAttribute="centerX" id="gnE-hp-ecc"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="height" secondItem="zSe-dx-mf0" secondAttribute="height" id="grl-2N-N1m"/>
+                            <constraint firstItem="l3J-yX-5oW" firstAttribute="top" secondItem="zSe-dx-mf0" secondAttribute="top" id="guu-Iq-rXg"/>
+                            <constraint firstItem="dqT-oY-jdW" firstAttribute="leading" secondItem="nVc-Ow-ZkX" secondAttribute="leading" constant="30" id="hb8-Ki-vwD">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="cnE-zq-gL8" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" id="iLM-lQ-kas"/>
+                            <constraint firstItem="yEC-GR-FlI" firstAttribute="leading" secondItem="nVc-Ow-ZkX" secondAttribute="leading" id="jVI-eF-tPI"/>
+                            <constraint firstItem="sjr-M9-Q1I" firstAttribute="centerX" secondItem="l3J-yX-5oW" secondAttribute="centerX" id="k89-qQ-TDT"/>
+                            <constraint firstItem="yEC-GR-FlI" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" id="kQo-uw-ba6"/>
+                            <constraint firstItem="sjr-M9-Q1I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dqT-oY-jdW" secondAttribute="trailing" constant="8" symbolic="YES" id="ldW-0H-KdS"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="top" secondItem="zIH-Oc-YH5" secondAttribute="bottom" constant="52" id="mOA-P4-V9c"/>
+                            <constraint firstItem="zIH-Oc-YH5" firstAttribute="centerY" secondItem="fET-zS-K9Y" secondAttribute="centerY" constant="-140" id="nPe-pF-JWN"/>
+                            <constraint firstItem="zIH-Oc-YH5" firstAttribute="top" secondItem="dqT-oY-jdW" secondAttribute="top" id="oOp-Fn-HaU"/>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="bottom" secondItem="32f-5l-cQt" secondAttribute="bottom" constant="30" id="p5h-8F-Bk8">
+                                <variation key="heightClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="bottom" secondItem="zSe-dx-mf0" secondAttribute="bottom" constant="20" id="s4z-4u-7ik"/>
+                            <constraint firstItem="JUX-zt-kaT" firstAttribute="centerX" secondItem="zSe-dx-mf0" secondAttribute="centerX" id="sR6-CD-M7f"/>
+                            <constraint firstItem="zIH-Oc-YH5" firstAttribute="centerX" secondItem="qWb-VX-ZDg" secondAttribute="centerX" id="tfb-73-jNU"/>
+                            <constraint firstItem="nVc-Ow-ZkX" firstAttribute="centerX" secondItem="l3J-yX-5oW" secondAttribute="centerX" id="uNk-5E-bkt"/>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="centerX" secondItem="fET-zS-K9Y" secondAttribute="centerX" constant="150" id="uQ1-vg-YWL"/>
+                            <constraint firstItem="yEC-GR-FlI" firstAttribute="trailing" secondItem="nVc-Ow-ZkX" secondAttribute="trailing" id="v29-2o-kD9"/>
+                            <constraint firstItem="zIH-Oc-YH5" firstAttribute="centerX" secondItem="qWb-VX-ZDg" secondAttribute="centerX" id="vmQ-zB-Mpt"/>
+                            <constraint firstItem="KGI-ot-jVN" firstAttribute="bottom" secondItem="WjV-IU-1OH" secondAttribute="top" constant="-15" id="wqi-jv-ilV">
+                                <variation key="heightClass=compact" constant="-5"/>
+                            </constraint>
+                            <constraint firstItem="qWb-VX-ZDg" firstAttribute="centerX" secondItem="fET-zS-K9Y" secondAttribute="centerX" id="xGd-vy-nIK"/>
+                            <constraint firstItem="32f-5l-cQt" firstAttribute="centerX" secondItem="dqT-oY-jdW" secondAttribute="centerX" id="xso-ak-g2v"/>
+                            <constraint firstItem="WjV-IU-1OH" firstAttribute="centerX" secondItem="nVc-Ow-ZkX" secondAttribute="centerX" id="ygt-rd-Qi5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Vy1-yB-HJc"/>
+                                <exclude reference="s4z-4u-7ik"/>
+                                <exclude reference="ezu-Br-Vgw"/>
+                                <exclude reference="JfR-hO-ClE"/>
+                                <exclude reference="p5h-8F-Bk8"/>
+                                <exclude reference="tfb-73-jNU"/>
+                                <exclude reference="vmQ-zB-Mpt"/>
+                                <exclude reference="nPe-pF-JWN"/>
+                                <exclude reference="DLD-L8-qp7"/>
+                                <exclude reference="gZ8-jf-vU5"/>
+                                <exclude reference="oOp-Fn-HaU"/>
+                                <exclude reference="MF5-YM-UiQ"/>
+                                <exclude reference="P9F-JI-BLb"/>
+                                <exclude reference="2sz-GK-Zhc"/>
+                                <exclude reference="N8H-tw-agN"/>
+                                <exclude reference="mOA-P4-V9c"/>
+                                <exclude reference="VUr-ai-GB8"/>
+                                <exclude reference="uQ1-vg-YWL"/>
+                                <exclude reference="xGd-vy-nIK"/>
+                                <exclude reference="fjp-65-amY"/>
+                                <exclude reference="hb8-Ki-vwD"/>
+                                <exclude reference="xso-ak-g2v"/>
+                                <exclude reference="Qng-jI-NDb"/>
+                                <exclude reference="ldW-0H-KdS"/>
+                                <exclude reference="sR6-CD-M7f"/>
+                                <exclude reference="KYP-mE-pde"/>
+                                <exclude reference="HQ8-GU-oie"/>
+                                <exclude reference="Qe4-t2-U5Y"/>
+                                <exclude reference="KfA-VP-3gs"/>
+                                <exclude reference="gnE-hp-ecc"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="UFS-VN-qEm"/>
+                                <include reference="s4z-4u-7ik"/>
+                                <include reference="ezu-Br-Vgw"/>
+                                <exclude reference="Llc-Xj-2G3"/>
+                                <exclude reference="uNk-5E-bkt"/>
+                                <include reference="p5h-8F-Bk8"/>
+                                <exclude reference="MmE-BH-PiE"/>
+                                <include reference="MF5-YM-UiQ"/>
+                                <exclude reference="VUr-ai-GB8"/>
+                                <exclude reference="xGd-vy-nIK"/>
+                                <exclude reference="dij-ei-AyG"/>
+                                <exclude reference="Moi-9u-6ui"/>
+                                <include reference="fjp-65-amY"/>
+                                <include reference="hb8-Ki-vwD"/>
+                                <exclude reference="aw6-YA-xHu"/>
+                                <exclude reference="7Mt-x0-KEf"/>
+                                <include reference="xso-ak-g2v"/>
+                                <include reference="wqi-jv-ilV"/>
+                                <include reference="Qng-jI-NDb"/>
+                                <exclude reference="XVF-1z-y57"/>
+                                <exclude reference="k89-qQ-TDT"/>
+                                <include reference="ldW-0H-KdS"/>
+                                <include reference="sR6-CD-M7f"/>
+                                <include reference="KYP-mE-pde"/>
+                                <include reference="HQ8-GU-oie"/>
+                                <exclude reference="2n9-AF-IKx"/>
+                                <include reference="Qe4-t2-U5Y"/>
+                                <include reference="KfA-VP-3gs"/>
+                                <exclude reference="K2Z-Jz-wE2"/>
+                                <exclude reference="guu-Iq-rXg"/>
+                                <include reference="gnE-hp-ecc"/>
+                                <exclude reference="GTK-VY-ZCZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="tfb-73-jNU"/>
+                                <include reference="DLD-L8-qp7"/>
+                                <include reference="N8H-tw-agN"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="vmQ-zB-Mpt"/>
+                                <include reference="nPe-pF-JWN"/>
+                                <include reference="2sz-GK-Zhc"/>
+                                <include reference="mOA-P4-V9c"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Vy1-yB-HJc"/>
+                                <include reference="gZ8-jf-vU5"/>
+                                <include reference="P9F-JI-BLb"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="JfR-hO-ClE"/>
+                                <include reference="oOp-Fn-HaU"/>
+                                <include reference="uQ1-vg-YWL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="JUX-zt-kaT" id="mgV-GK-N4g"/>
+                        <outlet property="cameraUnavailableLabel" destination="51y-ma-Z9l" id="aSU-GO-WA0"/>
+                        <outlet property="captureModeControl" destination="sjr-M9-Q1I" id="JnC-t1-rvt"/>
+                        <outlet property="capturingLivePhotoLabel" destination="WjV-IU-1OH" id="jLI-H2-PMo"/>
+                        <outlet property="depthDataDeliveryButton" destination="dqT-oY-jdW" id="CGp-8g-KO8"/>
+                        <outlet property="livePhotoModeButton" destination="32f-5l-cQt" id="UtZ-kR-P6b"/>
+                        <outlet property="photoButton" destination="l3J-yX-5oW" id="kIR-br-BQI"/>
+                        <outlet property="photoQualityPrioritizationSegControl" destination="KGI-ot-jVN" id="5t8-wK-VlI"/>
+                        <outlet property="portraitEffectsMatteDeliveryButton" destination="qWb-VX-ZDg" id="IQi-VV-VYs"/>
+                        <outlet property="previewView" destination="yEC-GR-FlI" id="o4N-j8-AvG"/>
+                        <outlet property="recordButton" destination="zSe-dx-mf0" id="VNg-YM-Rsr"/>
+                        <outlet property="resumeButton" destination="cnE-zq-gL8" id="Ivs-AT-G9S"/>
+                        <outlet property="semanticSegmentationMatteDeliveryButton" destination="zIH-Oc-YH5" id="7W2-5M-Qfr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m9v-cx-IW5" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7r3-kx-hs2">
+                    <connections>
+                        <action selector="focusAndExposeTap:" destination="iYy-Q6-b0m" id="Idd-QC-xiD"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="867" y="185"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="CapturePhoto" width="150" height="150"/>
+        <image name="CaptureVideo" width="150" height="150"/>
+        <image name="DepthON" width="150" height="150"/>
+        <image name="FlipCamera" width="150" height="150"/>
+        <image name="LivePhotoON" width="150" height="150"/>
+        <image name="MovieSelector" width="72" height="72"/>
+        <image name="PhotoSelector" width="72" height="72"/>
+        <image name="PortraitMatteON" width="150" height="150"/>
+        <image name="person.badge.plus.fill" catalog="system" width="128" height="124"/>
+        <image name="ssm" width="145" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

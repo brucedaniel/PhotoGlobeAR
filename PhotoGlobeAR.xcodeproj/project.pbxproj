@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AE96736506D76E39A2BF6FAA /* libPods-PhotoGlobeAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0372536E6836332E9F788A /* libPods-PhotoGlobeAR.a */; };
 		B35533C4258AF0D30059C993 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B35533C3258AF0D30059C993 /* README.md */; };
+		B35533F7258AF80E0059C993 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533F6258AF80E0059C993 /* PhotoCaptureDelegate.swift */; };
+		B35533FA258AFBF20059C993 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533F9258AFBF20059C993 /* CameraViewController.swift */; };
+		B35533FD258AFC3A0059C993 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533FC258AFC3A0059C993 /* PreviewView.swift */; };
+		B3553400258AFC590059C993 /* ItemSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35533FF258AFC590059C993 /* ItemSelectionViewController.swift */; };
 		B368173C258AEA7100186182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B368173B258AEA7100186182 /* GoogleService-Info.plist */; };
 		B368173F258AECC200186182 /* HideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368173E258AECC200186182 /* HideVC.swift */; };
 		B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C068A2583F9D0004D3D40 /* Photo.swift */; };
@@ -28,6 +32,10 @@
 		6830C3421F9023865E2443C4 /* Pods-PhotoGlobeAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGlobeAR.debug.xcconfig"; path = "Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR.debug.xcconfig"; sourceTree = "<group>"; };
 		79DC811E8A7B210638841D7B /* Pods-PhotoGlobeAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGlobeAR.release.xcconfig"; path = "Target Support Files/Pods-PhotoGlobeAR/Pods-PhotoGlobeAR.release.xcconfig"; sourceTree = "<group>"; };
 		B35533C3258AF0D30059C993 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		B35533F6258AF80E0059C993 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		B35533F9258AFBF20059C993 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		B35533FC258AFC3A0059C993 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		B35533FF258AFC590059C993 /* ItemSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewController.swift; sourceTree = "<group>"; };
 		B368173B258AEA7100186182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B368173E258AECC200186182 /* HideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideVC.swift; sourceTree = "<group>"; };
 		B37C068A2583F9D0004D3D40 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -103,12 +111,16 @@
 				F8191A5E258166170067C2B1 /* PhotoGlobeARView.swift */,
 				F8191A42258165490067C2B1 /* AppDelegate.swift */,
 				F8191A44258165490067C2B1 /* ViewController.swift */,
+				B35533F6258AF80E0059C993 /* PhotoCaptureDelegate.swift */,
 				F8191A46258165490067C2B1 /* Experience.rcproject */,
 				F8191A48258165490067C2B1 /* Main.storyboard */,
 				F8191A4B2581654A0067C2B1 /* Assets.xcassets */,
 				F8191A4D2581654A0067C2B1 /* LaunchScreen.storyboard */,
 				F8191A502581654A0067C2B1 /* Info.plist */,
 				B37C068A2583F9D0004D3D40 /* Photo.swift */,
+				B35533F9258AFBF20059C993 /* CameraViewController.swift */,
+				B35533FF258AFC590059C993 /* ItemSelectionViewController.swift */,
+				B35533FC258AFC3A0059C993 /* PreviewView.swift */,
 				B368173E258AECC200186182 /* HideVC.swift */,
 			);
 			path = PhotoGlobeAR;
@@ -239,11 +251,15 @@
 			files = (
 				B368173F258AECC200186182 /* HideVC.swift in Sources */,
 				B37C068B2583F9D0004D3D40 /* Photo.swift in Sources */,
+				B3553400258AFC590059C993 /* ItemSelectionViewController.swift in Sources */,
 				F8191A45258165490067C2B1 /* ViewController.swift in Sources */,
 				F8191A5F258166170067C2B1 /* PhotoGlobe.swift in Sources */,
 				F8191A43258165490067C2B1 /* AppDelegate.swift in Sources */,
+				B35533FD258AFC3A0059C993 /* PreviewView.swift in Sources */,
 				F8191A66258166170067C2B1 /* PhotoGlobeARView.swift in Sources */,
+				B35533F7258AF80E0059C993 /* PhotoCaptureDelegate.swift in Sources */,
 				F8191A47258165490067C2B1 /* Experience.rcproject in Sources */,
+				B35533FA258AFBF20059C993 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
